@@ -37,3 +37,16 @@
 	background: url('gps-icon.png') no-repeat 1px -43px;
 }
 
+.leaflet-control-gps .gps-alert {
+	position:absolute;
+	top:24px;
+	width:100px;
+	padding:2px;
+	line-height:.95em;
+	color:#e00;
+	border: 1px solid #888;	
+	background-color: rgba(255, 255, 255, 0.75);
+	border-radius:4px;
+}
+
+

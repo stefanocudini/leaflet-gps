@@ -2,7 +2,7 @@
  * Leaflet Search Control 1.0.0
  * https://github.com/stefanocudini/leaflet-gps
  * https://bitbucket.org/zakis_/leaflet-gps
- * http://easyblog.it/maps/leaflet-gps
+ * http://labs.easyblog.it/maps/leaflet-gps
  *
  * Copyright 2012, Stefano Cudini - stefano.cudini@gmail.com
  * Licensed under the MIT license.
@@ -34,7 +34,10 @@ L.Control.Gps = L.Control.extend({
         this._button = L.DomUtil.create('a', 'gps-button', container);
         this._button.href = '#';
         this._button.title = this.options.title;
-        
+		
+		this._alert = L.DomUtil.create('div', 'gps-alert', container);
+		this._alert.style.display = 'none';
+
         L.DomEvent
 			.disableClickPropagation(this._button)
 			.addListener(this._button, 'click', this._switchGps, this);
@@ -43,8 +46,8 @@ L.Control.Gps = L.Control.extend({
 			.addListener(map, 'locationfound', this._drawGps, this);
 		//TODO refact animation on locationfound, look under
 			
-//		L.DomEvent
-//			.addListener(map, 'locationerror', function(){ this._activeGps = false; }, this);//TODO refact
+		L.DomEvent
+			.addListener(map, 'locationerror', this._errorGps, this);//TODO refact
 
 		if(this.options.autoActive)
 			this._activeGps();
@@ -86,6 +89,21 @@ L.Control.Gps = L.Control.extend({
     	this._circleGps.setLatLng(e.latlng);
     	L.DomUtil.addClass(this._button, 'active');	
     },
+    
+    _errorGps: function(e) {
+    	this._deactiveGps();
+    	this.showAlert(e.message);
+    },
+    
+	showAlert: function(text) {
+		this._alert.style.display = 'block';
+		this._alert.innerHTML = text;
+		var that = this;
+		clearTimeout(this.timerAlert);
+		this.timerAlert = setTimeout(function() {
+			that._alert.style.display = 'none';
+		}, 2000);
+	},    
 
 //TODO refact animation on locationfound
 //	_animateLocation: function(latlng) {
