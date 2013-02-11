@@ -4,7 +4,7 @@ Leaflet.Control.GPS
 What ?
 ------
 
-A leaflet control that active gps locate
+A leaflet control plugin for tracking gps position
 
 Tested in Leaflet 0.4.4
 
@@ -25,9 +25,9 @@ Where ?
 ------
 
 Source code:
-	https://github.com/stefanocudini/leaflet-search
-	https://bitbucket.org/zakis_/leaflet-search
+	https://github.com/stefanocudini/leaflet-gps
+	https://bitbucket.org/zakis_/leaflet-gps
 
 Demos:
-	http://easyblog.it/maps/leaflet-gps/
+	http://labs.easyblog.it/maps/leaflet-gps/
 
