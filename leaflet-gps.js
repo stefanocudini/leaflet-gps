@@ -14,7 +14,7 @@ L.Control.Gps = L.Control.extend({
     options: {
         position: 'topleft',
         gpsLayer: null,
-        //TODO autoActive: false,
+        autoActive: false,
         title: 'Center map on your location'
     },
 
@@ -45,6 +45,9 @@ L.Control.Gps = L.Control.extend({
 			
 //		L.DomEvent
 //			.addListener(map, 'locationerror', function(){ this._activeGps = false; }, this);//TODO refact
+
+		if(this.options.autoActive)
+			this._activeGps();
 
         return container;
     },
