@@ -1,14 +1,14 @@
 Leaflet.Control.GPS
 ============
 
-What ?
+What
 ------
 
 A leaflet control plugin for tracking gps position
 
 Tested in Leaflet 0.4.4
 
-How ?
+How
 ------
 
 Adding the search control to the map:
@@ -21,7 +21,8 @@ and insert leaflet-gps.css styles to your css page
 
 ```
 
-Debugging ?
+Debugging
+------
 
 I recommend a chrome extension: 'Manual Geolocation'
 for simulate gps device and set realtime position
@@ -29,7 +30,7 @@ for simulate gps device and set realtime position
 https://chrome.google.com/webstore/detail/manual-geolocation/mfodligkojepnddfhkbkodbamcagfhlo
 
 
-Where ?
+Where
 ------
 
 Source code:
