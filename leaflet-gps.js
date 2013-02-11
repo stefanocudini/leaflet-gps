@@ -37,8 +37,7 @@ L.Control.Gps = L.Control.extend({
         
         L.DomEvent
 			.disableClickPropagation(this._button)
-			.addListener(this._button, 'click', this._activeGps, this);
-			//TODO use this._stateGps for switch _activeGps/_deactivGps 
+			.addListener(this._button, 'click', this._switchGps, this);
 		
 		L.DomEvent
 			.addListener(map, 'locationfound', this._drawGps, this);
@@ -56,6 +55,13 @@ L.Control.Gps = L.Control.extend({
 	onRemove: function(map) {
 		this._deactiveGps();
 	},
+	
+	_switchGps: function() {
+		if(this._stateGps)
+			this._deactiveGps();
+		else
+			this._activeGps();
+	},
     
     _activeGps: function() {
 	    this._map.locate({
@@ -70,7 +76,7 @@ L.Control.Gps = L.Control.extend({
 		this._map.stopLocate();
 		this._stateGps = false;
     	L.DomUtil.removeClass(this._button, 'active');
-		//TODO destroy this._circleGps		
+		this._circleGps.setLatLng([0,0]);  //hide without destroy	
     },
     
     _drawGps: function(e) {
