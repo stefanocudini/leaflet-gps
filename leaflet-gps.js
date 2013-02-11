@@ -29,16 +29,17 @@ L.Control.Gps = L.Control.extend({
     	this._map = map;
 		this._circleGps = (new L.CircleMarker([0,0], {radius: 20, weight:3, color: '#e03', fill: false})).addTo(this._map);
         	
-        var container = L.DomUtil.create('div', 'leaflet-control-gps'),
-            button = L.DomUtil.create('a', 'gps-button', container);
-        button.href = '#';
-        button.title = this.options.title;
-
+        var container = L.DomUtil.create('div', 'leaflet-control-gps');
+        
+        this._button = L.DomUtil.create('a', 'gps-button', container);
+        this._button.href = '#';
+        this._button.title = this.options.title;
+        
         L.DomEvent
-			.disableClickPropagation(button)
-			.addListener(button, 'click', this._activeGps, this);
+			.disableClickPropagation(this._button)
+			.addListener(this._button, 'click', this._activeGps, this);
 			//TODO use this._stateGps for switch _activeGps/_deactivGps 
-			
+		
 		L.DomEvent
 			.addListener(map, 'locationfound', this._drawGps, this);
 		//TODO refact animation on locationfound, look under
@@ -54,7 +55,6 @@ L.Control.Gps = L.Control.extend({
     
 	onRemove: function(map) {
 		this._deactiveGps();
-		//TODO destroy this._circleGps
 	},
     
     _activeGps: function() {
@@ -69,6 +69,8 @@ L.Control.Gps = L.Control.extend({
     _deactiveGps: function() {
 		this._map.stopLocate();
 		this._stateGps = false;
+    	L.DomUtil.removeClass(this._button, 'active');
+		//TODO destroy this._circleGps		
     },
     
     _drawGps: function(e) {
@@ -76,6 +78,7 @@ L.Control.Gps = L.Control.extend({
     	//e.bounds
     	this._stateGps = true;
     	this._circleGps.setLatLng(e.latlng);
+    	L.DomUtil.addClass(this._button, 'active');	
     },
 
 //TODO refact animation on locationfound
