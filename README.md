@@ -21,13 +21,25 @@ and insert leaflet-gps.css styles to your css page
 
 ```
 
+Debugging ?
+
+I recommend a chrome extension: 'Manual Geolocation'
+for simulate gps device and set realtime position
+
+https://chrome.google.com/webstore/detail/manual-geolocation/mfodligkojepnddfhkbkodbamcagfhlo
+
+
 Where ?
 ------
 
 Source code:
-	https://github.com/stefanocudini/leaflet-gps
-	https://bitbucket.org/zakis_/leaflet-gps
+
+https://github.com/stefanocudini/leaflet-gps
+
+https://bitbucket.org/zakis_/leaflet-gps
+
 
 Demos:
-	http://labs.easyblog.it/maps/leaflet-gps/
+
+http://labs.easyblog.it/maps/leaflet-gps/
 

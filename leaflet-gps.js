@@ -15,6 +15,10 @@ L.Control.Gps = L.Control.extend({
         position: 'topleft',
         gpsLayer: null,
         autoActive: false,
+        autoTracking: true,
+        //TODO maxzoom
+        //TODO autozoom
+        //TODO timeout autoTracking
         title: 'Center map on your location'
     },
 
@@ -69,9 +73,10 @@ L.Control.Gps = L.Control.extend({
     _activeGps: function() {
 	    this._map.locate({
 	        setView: true,
-	        enableHighAccuracy: true
-			//watch:true
-			//maximumAge:s	        
+	        enableHighAccuracy: true,
+			watch: this.options.autoTracking
+			//maximumAge:s
+			//maxZoom   
 	    });
     },
     
