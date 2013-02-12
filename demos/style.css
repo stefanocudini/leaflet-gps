@@ -18,6 +18,11 @@ h2, h3, h4 {
 	white-space:nowrap;
 	margin:1em 0 0 0;
 }
+hr {
+	border:none;
+	margin: 20px 0;
+	clear:both;
+}
 #desc {
 	white-space:nowrap;
 	font-size:1em;

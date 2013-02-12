@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+<title>Leaflet.Control.Gps - Styling circle</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<link rel="stylesheet" href="/leaflet/leaflet.css" />
+<link rel="stylesheet" href="../leaflet-gps.css" />
+<link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+<h3><a href="../">Leaflet.Control.Gps</a></h3>
+
+<h4>Styling circle: <em>customize circle cursor style</em></h4>
+<div id="map"></div>
+
+<script src="/leaflet/leaflet.js"></script>
+<script src="../leaflet-gps.js"></script>
+<script>
+
+	var map = new L.Map('map', {zoom: 9, center: new L.latLng([41.575730,13.002411]) });
+
+	map.addLayer(new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'));	//base layer
+
+	var newStyle = {radius: 25, weight:6, color: '#2e0', fill: true};
+	
+	map.addControl( new L.Control.Gps({circleStyle: newStyle }) );//inizialize control
+
+</script>
+
+<div id="copy">powered by <a href="mailto:stefano.cudini@gmail.com">Stefano Cudini</a></div>
+</body>
+</html>

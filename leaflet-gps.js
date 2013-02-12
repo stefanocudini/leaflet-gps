@@ -4,7 +4,7 @@
  * https://bitbucket.org/zakis_/leaflet-gps
  * http://labs.easyblog.it/maps/leaflet-gps
  *
- * Copyright 2012, Stefano Cudini - stefano.cudini@gmail.com
+ * Copyright 2013, Stefano Cudini - stefano.cudini@gmail.com
  * Licensed under the MIT license.
  */
 
@@ -15,14 +15,16 @@ L.Control.Gps = L.Control.extend({
         position: 'topleft',
         gpsLayer: null,
         autoActive: false,
-        autoTracking: true,
+        autoTracking: false,
         //TODO maxzoom
         //TODO autozoom
         //TODO timeout autoTracking
-        title: 'Center map on your location'
+        title: 'Center map on your location',
+        circleStyle: {radius: 16, weight:3, color: '#e03', fill: false}
     },
 
 	initialize: function(options) {
+		options.circleStyle = L.Util.extend({}, this.options.circleStyle, options.circleStyle); 
 		L.Util.setOptions(this, options);
 		this.options.gpsLayer = this.options.gpsLayer || new L.LayerGroup();
 		this._stateGps = false;//global state of gps
@@ -31,7 +33,7 @@ L.Control.Gps = L.Control.extend({
     onAdd: function (map) {
     
     	this._map = map;
-		this._circleGps = (new L.CircleMarker([0,0], {radius: 20, weight:3, color: '#e03', fill: false})).addTo(this._map);
+		this._circleGps = (new L.CircleMarker([0,0], this.options.circleStyle )).addTo(this._map);
         	
         var container = L.DomUtil.create('div', 'leaflet-control-gps');
         

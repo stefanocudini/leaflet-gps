@@ -24,26 +24,49 @@ A Leaflet Control for tracking your position<br />
 
 <h4>Demos</h4>
 <ul id="demos">
-	<li><a target="_blank" href="demos/simple.html">Simple</a></li>	
+	<li><a target="_blank" href="demos/simple.html">Simple</a></li>
+	<li><a target="_blank" href="demos/circle-style.html">Styling circle</a></li>	
 </ul>
 
 <h4>Website</h4>
 <a href="http://labs.easyblog.it/maps/leaflet-gps">labs.easyblog.it/maps/leaflet-gps</a>
+	<br />
 
+<h4>Download</h4>
+<ul>
+	<li><a href="https://github.com/stefanocudini/leaflet-gps/archive/master.zip">Dev Last Version (.zip)</a></li>
+	<li><a href="leaflet-gps.js">Source Code (.js)</a></li>
+	<li><a href="leaflet-gps.min.js">Compressed (.min.js)</a></li>		
+</ul>
+	
 <div id="copy">powered by <a href="mailto:stefano.cudini@gmail.com">Stefano Cudini</a></div>
 
-<script type="text/javascript">
+<hr />
 
+<div id="comments">
+	<div id="disqus_thread"></div>
+</div>
+
+<script type="text/javascript">
+var disqus_shortname = 'labs-easyblog-it';
+(function() {
+	var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+	(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-38393469-1']);
   _gaq.push(['_trackPageview']);
-
   (function() {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-
 </script>
 
 </body>
