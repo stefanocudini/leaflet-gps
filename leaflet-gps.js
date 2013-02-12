@@ -9,19 +9,20 @@
  */
 
 L.Control.Gps = L.Control.extend({
+
 	includes: L.Mixin.Events, 
-	
-    options: {
-        position: 'topleft',
-        gpsLayer: null,
-        autoActive: false,
-        autoTracking: false,
-        //TODO maxzoom
-        //TODO autozoom
-        //TODO timeout autoTracking
-        title: 'Center map on your location',
-        circleStyle: {radius: 16, weight:3, color: '#e03', fill: false}
-    },
+
+	options: {
+		position: 'topleft',
+		gpsLayer: null,
+		autoActive: false,
+		autoTracking: false,
+		//TODO maxzoom
+		//TODO autozoom
+		//TODO timeout autoTracking
+		title: 'Center map on your location',
+		circleStyle: {radius: 16, weight:3, color: '#e03', fill: false}
+	},
 
 	initialize: function(options) {
 		options.circleStyle = L.Util.extend({}, this.options.circleStyle, options.circleStyle); 
@@ -110,7 +111,7 @@ L.Control.Gps = L.Control.extend({
 		this.timerAlert = setTimeout(function() {
 			that._alert.style.display = 'none';
 		}, 2000);
-	},    
+	}
 
 //TODO refact animation on locationfound
 //	_animateLocation: function(latlng) {
