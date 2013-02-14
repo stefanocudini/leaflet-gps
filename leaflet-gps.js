@@ -1,5 +1,5 @@
 /*
- * Leaflet Search Control 1.0.0
+ * Leaflet Gps Control 1.0.0
  * https://github.com/stefanocudini/leaflet-gps
  * https://bitbucket.org/zakis_/leaflet-gps
  * http://labs.easyblog.it/maps/leaflet-gps
