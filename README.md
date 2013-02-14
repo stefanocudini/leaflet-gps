@@ -15,7 +15,7 @@ Adding the search control to the map:
 
 ```
 
-map.addControl(new L.Control.Gps();
+map.addControl( new L.Control.Gps() );
 
 and insert leaflet-gps.css styles to your css page
 
