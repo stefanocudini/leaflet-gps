@@ -14,27 +14,28 @@ L.Control.Gps = L.Control.extend({
 
 	options: {
 		position: 'topleft',
-		gpsLayer: null,
+		//TODO add gpsLayer
 		autoActive: false,
 		autoTracking: false,
 		//TODO maxzoom
 		//TODO autozoom
 		//TODO timeout autoTracking
+		marker: false, //using a marker
 		title: 'Center map on your location',
-		circleStyle: {radius: 16, weight:3, color: '#e03', fill: false}
+		style: {radius: 16, weight:3, color: '#e03', fill: false}
 	},
 
 	initialize: function(options) {
-		options.circleStyle = L.Util.extend({}, this.options.circleStyle, options.circleStyle); 
+		options.style = L.Util.extend({}, this.options.style, options.style); 
 		L.Util.setOptions(this, options);
-		this.options.gpsLayer = this.options.gpsLayer || new L.LayerGroup();
 		this._stateGps = false;//global state of gps
 	},
 	
     onAdd: function (map) {
     
     	this._map = map;
-		this._circleGps = (new L.CircleMarker([0,0], this.options.circleStyle )).addTo(this._map);
+		this._gps = this._createGps();
+		this._map.addLayer( this._gps );
         	
         var container = L.DomUtil.create('div', 'leaflet-control-gps');
         
@@ -66,6 +67,13 @@ L.Control.Gps = L.Control.extend({
 		this._deactiveGps();
 	},
 	
+	_createGps: function() {
+		if(this.options.marker)
+			return ( new L.Marker([0,0]) );
+		else
+			return ( new L.CircleMarker([0,0], this.options.style ));
+	},
+	
 	_switchGps: function() {
 		if(this._stateGps)
 			this._deactiveGps();
@@ -87,14 +95,14 @@ L.Control.Gps = L.Control.extend({
 		this._map.stopLocate();
 		this._stateGps = false;
     	L.DomUtil.removeClass(this._button, 'active');
-		this._circleGps.setLatLng([0,0]);  //hide without destroy	
+		this._gps.setLatLng([0,0]);  //hide without destroy	
     },
     
     _drawGps: function(e) {
-    	//e.accuracy	//TODO use for circle radius/color
+    	//e.accuracy	//TODO use for gps circle radius/color
     	//e.bounds
     	this._stateGps = true;
-    	this._circleGps.setLatLng(e.latlng);
+    	this._gps.setLatLng(e.latlng);
     	L.DomUtil.addClass(this._button, 'active');	
     },
     
@@ -116,7 +124,7 @@ L.Control.Gps = L.Control.extend({
 //TODO refact animation on locationfound
 //	_animateLocation: function(latlng) {
 //	
-//		var circle = this._circleGps;
+//		var circle = this._gps;
 //		circle.setLatLng(latlng);
 //		circle.setRadius(20);
 //	
