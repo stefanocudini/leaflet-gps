@@ -26,7 +26,7 @@ L.Control.Gps = L.Control.extend({
 	},
 
 	initialize: function(options) {
-		if(options.style)
+		if(options && options.style)
 			options.style = L.Util.extend({}, this.options.style, options.style); 
 		L.Util.setOptions(this, options);
 		this._stateGps = false;//global state of gps
