@@ -13,7 +13,7 @@ L.Control.Gps = L.Control.extend({
 	includes: L.Mixin.Events, 
 
 	options: {
-		position: 'topleft',
+		position: 'bottomleft',
 		//TODO add gpsLayer
 		autoActive: false,
 		autoTracking: false,
