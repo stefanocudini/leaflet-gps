@@ -17,7 +17,7 @@ L.Control.Gps = L.Control.extend({
 		//TODO add gpsLayer
 		autoActive: false,
 		autoTracking: false,
-		//TODO maxzoom
+		maxZoom: null,
 		//TODO autozoom
 		//TODO timeout autoTracking
 		marker: false, //using a marker
@@ -85,11 +85,11 @@ L.Control.Gps = L.Control.extend({
     
     _activeGps: function() {
 	    this._map.locate({
-	        setView: true,
+	        setView: true,	//automatically sets the map view to the user location
 	        enableHighAccuracy: true,
-			watch: this.options.autoTracking
+			watch: this.options.autoTracking,
 			//maximumAge:s
-			//maxZoom   
+			maxZoom: this.options.maxZoom   
 	    });
     },
     
