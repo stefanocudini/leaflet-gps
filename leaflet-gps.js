@@ -22,6 +22,7 @@ L.Control.Gps = L.Control.extend({
 		//TODO timeout autoTracking
 		marker: false, //using a marker
 		title: 'Center map on your location',
+		textErr: null,
 		style: {radius: 16, weight:3, color: '#e03', fill: false}
 	},
 
@@ -109,7 +110,7 @@ L.Control.Gps = L.Control.extend({
     
     _errorGps: function(e) {
     	this._deactiveGps();
-    	this.showAlert(e.message);
+    	this.showAlert(this.options.textErr || e.message);
     },
     
 	showAlert: function(text) {
