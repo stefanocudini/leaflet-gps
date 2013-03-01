@@ -34,7 +34,8 @@
 
 .leaflet-control-gps .gps-alert {
 	position:absolute;
-	top:24px;
+	left:26px;
+	bottom:-1px;
 	width:100px;
 	padding:2px;
 	line-height:.95em;
