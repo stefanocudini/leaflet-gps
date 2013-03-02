@@ -17,9 +17,8 @@ L.Control.Gps = L.Control.extend({
 		//TODO add gpsLayer
 		autoActive: false,
 		autoTracking: false,
-		maxZoom: null,
-		//TODO autozoom
 		//TODO timeout autoTracking
+		maxZoom: null,
 		marker: false, //using a marker
 		title: 'Center map on your location',
 		textErr: null,
@@ -85,10 +84,10 @@ L.Control.Gps = L.Control.extend({
     
     _activeGps: function() {
 	    this._map.locate({
-	        setView: true,	//automatically sets the map view to the user location
 	        enableHighAccuracy: true,
 			watch: this.options.autoTracking,
 			//maximumAge:s
+	        setView: false,	//automatically sets the map view to the user location
 			maxZoom: this.options.maxZoom   
 	    });
     },
@@ -103,6 +102,13 @@ L.Control.Gps = L.Control.extend({
     _drawGps: function(e) {
     	//e.accuracy	//TODO use for gps circle radius/color
     	//e.bounds
+    	if(this.options.autoTracking)
+    	{
+			if(this.options.maxZoom)
+				this._map.setView(e.latlng, Math.min(this._map.getZoom(), this.options.maxZoom) );
+			else
+				this._map.panTo(e.latlng);
+		}
     	this._stateGps = true;
     	this._gps.setLatLng(e.latlng);
     	L.DomUtil.addClass(this._button, 'active');	
