@@ -108,8 +108,8 @@ L.Control.Gps = L.Control.extend({
     	if(this.options.autoTracking || this._isActive)
 			this._moveTo(e.latlng);
     	this._gps.setLatLng(e.latlng);
-    	if(this._gps.setRadius)
-    		this._gps.setRadius((e.accuracy / 2).toFixed(0));
+//    	if(this._gps.accuracyCircle)
+//    		this._gps.accuracyCircle.setRadius((e.accuracy / 2).toFixed(0));
     		
     	this.fire('gpslocated', {marker: this._gps, latlng: e.latlng});
     	
