@@ -26,7 +26,7 @@ L.Control.Gps = L.Control.extend({
 		showMarker: false,		//show marker or circle
 		title: 'Center map on your location',
 		textErr: null,
-		callErr: this.showAlert,
+		callErr: null,
 		style: {radius: 16, weight:3, color: '#e03', fill: false}	//circle style
 	},
 
@@ -34,6 +34,7 @@ L.Control.Gps = L.Control.extend({
 		if(options && options.style)
 			options.style = L.Util.extend({}, this.options.style, options.style); 
 		L.Util.setOptions(this, options);
+		this._errorFunc = this.options.callErr || this.showAlert;
 		this._isActive = false;//global state of gps
 	},
 	
@@ -124,7 +125,7 @@ L.Control.Gps = L.Control.extend({
     
     _errorGps: function(e) {
     	this.deactivate();
-    	this.options.callErr.call(this, this.options.textErr || e.message);
+    	this._errorFunc.call(this, this.options.textErr || e.message);
     },
     
 	showAlert: function(text) {
