@@ -20,7 +20,7 @@ L.Control.Gps = L.Control.extend({
 		position: 'topleft',
 		//TODO add gpsLayer
 		autoActive: false,
-		autoTracking: true,
+		autoTracking: false,
 		//TODO timeout autoTracking
 		maxZoom: null,		//max zoom for autoTracking
 		showMarker: false,		//show marker or circle
