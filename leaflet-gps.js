@@ -11,61 +11,62 @@
 L.Control.Gps = L.Control.extend({
 
 	includes: L.Mixin.Events, 
-
+	//
+	//Managed Events:
+	//	Event			Data passed			Description
+	//	gpslocated		{marker,latlng}		fired after gps marker is located
+	//
 	options: {
-		position: 'bottomleft',
+		position: 'topleft',
 		//TODO add gpsLayer
 		autoActive: false,
-		autoTracking: false,
+		autoTracking: true,
 		//TODO timeout autoTracking
-		maxZoom: null,
-		marker: false, //using a marker
+		maxZoom: null,		//max zoom for autoTracking
+		showMarker: false,		//show marker or circle
 		title: 'Center map on your location',
 		textErr: null,
-		style: {radius: 16, weight:3, color: '#e03', fill: false}
+		callErr: this.showAlert,
+		style: {radius: 16, weight:3, color: '#e03', fill: false}	//circle style
 	},
 
 	initialize: function(options) {
 		if(options && options.style)
 			options.style = L.Util.extend({}, this.options.style, options.style); 
 		L.Util.setOptions(this, options);
-		this._stateGps = false;//global state of gps
+		this._isActive = false;//global state of gps
 	},
 	
     onAdd: function (map) {
     
-    	this._map = map;
-		this._gps = this._createGps();
-		this._map.addLayer( this._gps );
+    	this._map = map;	
         	
         var container = L.DomUtil.create('div', 'leaflet-control-gps');
-        
+
         this._button = L.DomUtil.create('a', 'gps-button', container);
         this._button.href = '#';
         this._button.title = this.options.title;
-		
+		L.DomEvent
+			.on(this._button, 'click', L.DomEvent.stop, this)
+			.on(this._button, 'click', this._switchGps, this);
+
 		this._alert = L.DomUtil.create('div', 'gps-alert', container);
 		this._alert.style.display = 'none';
 
-        L.DomEvent
-			.disableClickPropagation(this._button)
-			.addListener(this._button, 'click', this._switchGps, this);
-		
-		L.DomEvent
-			.addListener(map, 'locationfound', this._drawGps, this);
-		//TODO refact animation on locationfound, look under
+		this._gps = this._createGps();
+		this._map.addLayer( this._gps );
+		this._map
+			.on('locationfound', this._drawGps, this)
+			.on('locationerror', this._errorGps, this);	
 			
-		L.DomEvent
-			.addListener(map, 'locationerror', this._errorGps, this);//TODO refact
-
 		if(this.options.autoActive)
-			this._activeGps();
+			this.activate();
 
         return container;
     },
     
 	onRemove: function(map) {
-		this._deactiveGps();
+		this.deactivate();
 	},
 	
 	_createGps: function() {
@@ -76,47 +77,54 @@ L.Control.Gps = L.Control.extend({
 	},
 	
 	_switchGps: function() {
-		if(this._stateGps)
-			this._deactiveGps();
+		if(this._isActive)
+			this.deactivate();
 		else
-			this._activeGps();
+			this.activate();
 	},
     
-    _activeGps: function() {
+    activate: function() {
+	    this._isActive = true;
 	    this._map.locate({
 	        enableHighAccuracy: true,
 			watch: this.options.autoTracking,
 			//maximumAge:s
 	        setView: false,	//automatically sets the map view to the user location
 			maxZoom: this.options.maxZoom   
-	    });
+	    });	    
     },
     
-    _deactiveGps: function() {
+    deactivate: function() {
+   		this._isActive = false;    
 		this._map.stopLocate();
-		this._stateGps = false;
     	L.DomUtil.removeClass(this._button, 'active');
-		this._gps.setLatLng([0,0]);  //hide without destroy	
+		this._gps.setLatLng([-90,0]);  //move to antarctica!
+		//TODO make method .hide() using _icon.style.display = 'none'
     },
     
     _drawGps: function(e) {
-    	//e.accuracy	//TODO use for gps circle radius/color
-    	//e.bounds
-    	if(this.options.autoTracking)
-    	{
-			if(this.options.maxZoom)
-				this._map.setView(e.latlng, Math.min(this._map.getZoom(), this.options.maxZoom) );
-			else
-				this._map.panTo(e.latlng);
-		}
-    	this._stateGps = true;
+    	//TODO use e.accuracy for gps circle radius/color
+    	if(this.options.autoTracking || this._isActive)
+			this._moveTo(e.latlng);
     	this._gps.setLatLng(e.latlng);
+    	if(this._gps.setRadius)
+    		this._gps.setRadius((e.accuracy / 2).toFixed(0));
+    		
+    	this.fire('gpslocated', {marker: this._gps, latlng: e.latlng});
+    	
     	L.DomUtil.addClass(this._button, 'active');	
     },
     
+    _moveTo: function(latlng) {
+		if(this.options.maxZoom)
+			this._map.setView(latlng, Math.min(this._map.getZoom(), this.options.maxZoom) );
+		else
+			this._map.panTo(latlng);    
+    },
+    
     _errorGps: function(e) {
-    	this._deactiveGps();
-    	this.showAlert(this.options.textErr || e.message);
+    	this.deactivate();
+    	this.options.callErr.call(this, this.options.textErr || e.message);
     },
     
 	showAlert: function(text) {
@@ -128,28 +136,4 @@ L.Control.Gps = L.Control.extend({
 			that._alert.style.display = 'none';
 		}, 2000);
 	}
-
-//TODO refact animation on locationfound
-//	_animateLocation: function(latlng) {
-//	
-//		var circle = this._gps;
-//		circle.setLatLng(latlng);
-//		circle.setRadius(20);
-//	
-//		var	tt = 200,
-//			ss = 10,
-//			mr = parseInt(circle._radius/ss),
-//			f = 0;
-//		var	that = this;
-//		this.timerAnimLoc = setInterval(function() {  //animation
-//			f += 0.5;
-//			mr += f;//adding acceleration
-//			var nr = circle._radius - mr;
-//			if( nr > 2)
-//				circle.setRadius(nr);
-//			else
-//				clearInterval(that.timerAnimLoc);
-//		}, tt);
-//	},
-
 });
