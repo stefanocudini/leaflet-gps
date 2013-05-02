@@ -36,6 +36,7 @@ L.Control.Gps = L.Control.extend({
 		L.Util.setOptions(this, options);
 		this._errorFunc = this.options.callErr || this.showAlert;
 		this._isActive = false;//global state of gps
+		this._currentLocation = null;	//store last location
 	},
 	
     onAdd: function (map) {
@@ -83,6 +84,10 @@ L.Control.Gps = L.Control.extend({
 		else
 			this.activate();
 	},
+	
+	getLocation: function() {	//get last location
+		return this._currentLocation;
+	},
     
     activate: function() {
 	    this._isActive = true;
@@ -105,8 +110,13 @@ L.Control.Gps = L.Control.extend({
     
     _drawGps: function(e) {
     	//TODO use e.accuracy for gps circle radius/color
+    	this._currentLocation = e.latlng;
+    	
+    	//TODO add new event here
+    	
     	if(this.options.autoTracking || this._isActive)
 			this._moveTo(e.latlng);
+			
     	this._gps.setLatLng(e.latlng);
 //    	if(this._gps.accuracyCircle)
 //    		this._gps.accuracyCircle.setRadius((e.accuracy / 2).toFixed(0));
