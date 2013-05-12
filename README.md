@@ -6,7 +6,7 @@ What
 
 A leaflet control plugin for tracking gps position
 
-Tested in Leaflet 0.4.4
+Tested in Leaflet 0.5.1
 
 How
 ------

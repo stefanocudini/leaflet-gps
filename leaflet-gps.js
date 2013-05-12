@@ -16,18 +16,18 @@ L.Control.Gps = L.Control.extend({
 	//	Event			Data passed			Description
 	//	gpslocated		{marker,latlng}		fired after gps marker is located
 	//
-	options: {
-		position: 'topleft',
-		//TODO add gpsLayer
+	options: {		
 		autoActive: false,
 		autoTracking: false,
-		//TODO timeout autoTracking
-		maxZoom: null,		//max zoom for autoTracking
-		showMarker: false,		//show marker or circle
+		maxZoom: null,			//max zoom for autoTracking
+		marker: null,			//L.Marker used for location, default use a L.CircleMarker
+		position: 'topleft',
 		title: 'Center map on your location',
 		textErr: null,
 		callErr: null,
 		style: {radius: 16, weight:3, color: '#e03', fill: false}	//circle style
+		//TODO add gpsLayer
+		//TODO timeout autoTracking		
 	},
 
 	initialize: function(options) {
@@ -55,8 +55,9 @@ L.Control.Gps = L.Control.extend({
 		this._alert = L.DomUtil.create('div', 'gps-alert', container);
 		this._alert.style.display = 'none';
 
-		this._gps = this._createGps();
+		this._gps = this.options.marker ? this.options.marker : new L.CircleMarker([0,0], this.options.style);
 		this._map.addLayer( this._gps );
+		
 		this._map
 			.on('locationfound', this._drawGps, this)
 			.on('locationerror', this._errorGps, this);	
@@ -69,13 +70,6 @@ L.Control.Gps = L.Control.extend({
     
 	onRemove: function(map) {
 		this.deactivate();
-	},
-	
-	_createGps: function() {
-		if(this.options.marker)
-			return ( new L.Marker([0,0]) );
-		else
-			return ( new L.CircleMarker([0,0], this.options.style ));
 	},
 	
 	_switchGps: function() {
