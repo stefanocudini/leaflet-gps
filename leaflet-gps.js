@@ -1,8 +1,9 @@
 /*
  * Leaflet Gps Control 1.0.0
- * https://github.com/stefanocudini/leaflet-gps
- * https://bitbucket.org/zakis_/leaflet-gps
  * http://labs.easyblog.it/maps/leaflet-gps
+ *
+ * https://github.com/stefanocudini/leaflet-gps
+ * https://bitbucket.org/zakis_/leaflet-gps 
  *
  * Copyright 2013, Stefano Cudini - stefano.cudini@gmail.com
  * Licensed under the MIT license.
@@ -14,18 +15,27 @@ L.Control.Gps = L.Control.extend({
 	//
 	//Managed Events:
 	//	Event			Data passed			Description
-	//	gpslocated		{marker,latlng}		fired after gps marker is located
+	//	gpslocated		{latlng, marker}	fired after gps marker is located
+	//
+	//Methods exposed:
+	//	method 			Description
+	//  getLocation		return Latlng and marker of current position
+	//  activate		active tracking on runtime
+	//  deactivate		deactive tracking on runtime
 	//
 	options: {		
-		autoActive: false,
-		autoTracking: false,
+		autoActive: false,		//activate control at startup
+		autoTracking: false,	//move map when gps location change
 		maxZoom: null,			//max zoom for autoTracking
 		marker: null,			//L.Marker used for location, default use a L.CircleMarker
-		position: 'topleft',
+		textErr: null,			//error message on alert notification
+		callErr: null,			//function that run on gps error activating
+		style: {radius: 16,		//marker circle style
+				weight:3,
+				color: '#e03',
+				fill: false},
 		title: 'Center map on your location',
-		textErr: null,
-		callErr: null,
-		style: {radius: 16, weight:3, color: '#e03', fill: false}	//circle style
+		position: 'topleft'
 		//TODO add gpsLayer
 		//TODO timeout autoTracking		
 	},
@@ -115,7 +125,7 @@ L.Control.Gps = L.Control.extend({
 //    	if(this._gps.accuracyCircle)
 //    		this._gps.accuracyCircle.setRadius((e.accuracy / 2).toFixed(0));
     		
-    	this.fire('gpslocated', {marker: this._gps, latlng: e.latlng});
+    	this.fire('gpslocated', {latlng: e.latlng, marker: this._gps});
     	
     	L.DomUtil.addClass(this._button, 'active');	
     },
