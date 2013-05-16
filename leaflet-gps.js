@@ -1,5 +1,5 @@
 /*
- * Leaflet Gps Control 1.0.0
+ * Leaflet Gps Control 1.1.0
  * http://labs.easyblog.it/maps/leaflet-gps
  *
  * https://github.com/stefanocudini/leaflet-gps
@@ -8,6 +8,8 @@
  * Copyright 2013, Stefano Cudini - stefano.cudini@gmail.com
  * Licensed under the MIT license.
  */
+
+(function() {
 
 L.Control.Gps = L.Control.extend({
 
@@ -152,3 +154,9 @@ L.Control.Gps = L.Control.extend({
 		}, 2000);
 	}
 });
+
+L.control.gps = function (options) {
+    return new L.Control.Gps(options);
+};
+
+}).call(this);
