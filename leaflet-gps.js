@@ -67,8 +67,8 @@ L.Control.Gps = L.Control.extend({
 		this._alert = L.DomUtil.create('div', 'gps-alert', container);
 		this._alert.style.display = 'none';
 
-		this._gps = this.options.marker ? this.options.marker : new L.CircleMarker([0,0], this.options.style);
-		this._map.addLayer( this._gps );
+		this._gpsMarker = this.options.marker ? this.options.marker : new L.CircleMarker([0,0], this.options.style);
+		this._map.addLayer( this._gpsMarker );
 		
 		this._map
 			.on('locationfound', this._drawGps, this)
@@ -110,7 +110,7 @@ L.Control.Gps = L.Control.extend({
    		this._isActive = false;    
 		this._map.stopLocate();
     	L.DomUtil.removeClass(this._button, 'active');
-		this._gps.setLatLng([-90,0]);  //move to antarctica!
+		this._gpsMarker.setLatLng([-90,0]);  //move to antarctica!
 		//TODO make method .hide() using _icon.style.display = 'none'
     },
     
@@ -123,11 +123,11 @@ L.Control.Gps = L.Control.extend({
     	if(this.options.autoTracking || this._isActive)
 			this._moveTo(e.latlng);
 			
-    	this._gps.setLatLng(e.latlng);
-//    	if(this._gps.accuracyCircle)
-//    		this._gps.accuracyCircle.setRadius((e.accuracy / 2).toFixed(0));
+    	this._gpsMarker.setLatLng(e.latlng);
+//    	if(this._gpsMarker.accuracyCircle)
+//    		this._gpsMarker.accuracyCircle.setRadius((e.accuracy / 2).toFixed(0));
     		
-    	this.fire('gpslocated', {latlng: e.latlng, marker: this._gps});
+    	this.fire('gpslocated', {latlng: e.latlng, marker: this._gpsMarker});
     	
     	L.DomUtil.addClass(this._button, 'active');	
     },
