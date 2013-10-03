@@ -1,4 +1,14 @@
-
+/*
+ * Leaflet Gps Control 1.0.0
+ * http://labs.easyblog.it/maps/leaflet-gps
+ *
+ * https://github.com/stefanocudini/leaflet-gps
+ * https://bitbucket.org/zakis_/leaflet-gps 
+ *
+ * Copyright 2013, Stefano Cudini - stefano.cudini@gmail.com
+ * Licensed under the MIT license.
+ */
+ 
 .leaflet-container .leaflet-control-gps {
 	position:relative;
 	float:left;
@@ -10,33 +20,32 @@
 /*	padding:5px;*/
 	border: 1px solid #888;
 	/*background-color: rgba(0, 0, 0, 0.25);*/
-	background-color: rgba(255, 255, 255, 0.8);
+	background-color: #fff;
 	z-index:1000;	
 	box-shadow: 0 0 8px rgba(0,0,0,0.4);
-
-	margin-left: 13px;
-	margin-top: 12px;
+	margin-left:9px;
+	margin-top:12px;
 }
 .leaflet-control-gps .gps-button {
 	display:block;
 	float:left;
-	width:22px;
-	height:22px;
-	background: url('gps-icon.png') no-repeat 1px 1px;
-	background-color: rgba(255, 255, 255, 0.3);
+	width:26px;
+	height:26px;
+	background: url('gps-icon.png') no-repeat 2px 2px;
 	border-radius:4px;
 }
 .leaflet-control-gps .gps-button:hover,
 .leaflet-control-gps .gps-button.active:hover {
-	background: url('gps-icon.png') no-repeat 1px -21px;
+	background: url('gps-icon.png') no-repeat 2px -25px;
 }
 .leaflet-control-gps .gps-button.active {
-	background: url('gps-icon.png') no-repeat 1px -43px;
+	background: url('gps-icon.png') no-repeat 2px -50px;
 }
 
 .leaflet-control-gps .gps-alert {
 	position:absolute;
-	top:24px;
+	left:26px;
+	bottom:-1px;
 	width:100px;
 	padding:2px;
 	line-height:.95em;
