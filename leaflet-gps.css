@@ -29,15 +29,15 @@
 	float:left;
 	width:26px;
 	height:26px;
-	background: url('gps-icon.png') no-repeat 3px 3px;
+	background: url('gps-icon.png') no-repeat 2px 2px;
 	border-radius:4px;
 }
 .leaflet-control-gps .gps-button:hover,
 .leaflet-control-gps .gps-button.active:hover {
-	background: url('gps-icon.png') no-repeat 3px -22px #fff;
+	background: url('gps-icon.png') no-repeat 2px -24px #fff;
 }
 .leaflet-control-gps .gps-button.active {
-	background: url('gps-icon.png') no-repeat 3px -47px #fff;
+	background: url('gps-icon.png') no-repeat 2px -50px #fff;
 }
 
 .leaflet-control-gps .gps-alert {
