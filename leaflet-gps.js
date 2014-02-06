@@ -18,6 +18,7 @@ L.Control.Gps = L.Control.extend({
 	//Managed Events:
 	//	Event			Data passed			Description
 	//	gpslocated		{latlng, marker}	fired after gps marker is located
+	//	gpsdisabled							fired after gps is disabled
 	//
 	//Methods exposed:
 	//	method 			Description
@@ -112,6 +113,7 @@ L.Control.Gps = L.Control.extend({
     	L.DomUtil.removeClass(this._button, 'active');
 		this._gpsMarker.setLatLng([-90,0]);  //move to antarctica!
 		//TODO make method .hide() using _icon.style.display = 'none'
+		this.fire('gpsdisabled');
     },
     
     _drawGps: function(e) {
