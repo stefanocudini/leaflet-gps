@@ -1,46 +1,37 @@
 Leaflet.Control.GPS
 ============
 
-What
-------
-
 A leaflet control plugin for tracking gps position
 
-Tested in Leaflet 0.6.4
+Tested in Leaflet 0.7
 
-How
-------
+**Demos online:**  
+[labs.easyblog.it/maps/leaflet-gps](http://labs.easyblog.it/maps/leaflet-gps/)
 
-Adding the search control to the map:
+#How to use
+
+Adding the GPS Control to the map:
 
 ```
-
 map.addControl( new L.Control.Gps() );
 
-and insert leaflet-gps.css styles to your css page
-
 ```
 
-Debugging
-------
+#Debugging
 
 I recommend a chrome extension: 'Manual Geolocation'
 for simulate gps device and set realtime position
 
-https://chrome.google.com/webstore/detail/manual-geolocation/mfodligkojepnddfhkbkodbamcagfhlo
+[Manual Geolocation](https://chrome.google.com/webstore/detail/manual-geolocation/mfodligkojepnddfhkbkodbamcagfhlo)
 
 
-Where
-------
+#Where
 
-Source code:
+**Demos online:**  
+[labs.easyblog.it/maps/leaflet-gps](http://labs.easyblog.it/maps/leaflet-gps/)
 
-https://github.com/stefanocudini/leaflet-gps
-
-https://bitbucket.org/zakis_/leaflet-gps
-
-
-Demos:
-
-http://labs.easyblog.it/maps/leaflet-gps/
-
+**Source code:**  
+[Github](https://github.com/stefanocudini/leaflet-gps)  
+[Bitbucket](https://bitbucket.org/zakis_/leaflet-gps)  
+[NPM](https://npmjs.org/package/leaflet-gps)  
+[Atmosphere](https://atmosphere.meteor.com/package/leaflet-gps)

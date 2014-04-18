@@ -1,18 +1,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml"> 
 <head> 
-<title>Leaflet.Control.Gps - Styling circle</title> 
+<title>Leaflet.Control.Gps - Simple Example</title> 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
 <link rel="stylesheet" href="/maps/leaflet/dist/leaflet.css" />
-<link rel="stylesheet" href="../leaflet-gps.css" />
+<link rel="stylesheet" href="../src/leaflet-gps.css" />
 <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-<h3><a href="../">Leaflet.Control.Gps</a></h3>
+<h3><big>◄</big> <a href="../">Leaflet.Control.Gps</a></h3>
 
-<h4>Styling circle: <em>customize circle cursor style</em></h4>
+<h4>Simple Example: <em>zoom on gps position</em></h4>
 <div id="map"></div>
 
 <br />
@@ -22,19 +22,18 @@ Using Chrome extension for testing:
 </small>
 
 <script src="/maps/leaflet/dist/leaflet.js"></script>
-<script src="../leaflet-gps.js"></script>
+<script src="../src/leaflet-gps.js"></script>
 <script>
 
 	var map = new L.Map('map', {zoom: 12, center: new L.latLng([41.575730,13.002411]) });
 
 	map.addLayer(new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'));	//base layer
 
-	var newStyle = {radius: 25, weight:6, color: '#ee0', fill: true, opacity:0.8};
-	
-	map.addControl( new L.Control.Gps({style: newStyle }) );//inizialize control
+	map.addControl( new L.Control.Gps() );//inizialize control
 
 </script>
 
-<div id="copy">powered by <a href="mailto:stefano.cudini@gmail.com">Stefano Cudini</a></div>
+<div id="copy"><a href="http://labs.easyblog.it/">Labs</a> &bull; <a rel="author" href="http://labs.easyblog.it/stefano-cudini/">Stefano Cudini</a></div>
+<a href="https://github.com/stefanocudini/leaflet-gps"><img id="ribbon" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
 </body>
 </html>

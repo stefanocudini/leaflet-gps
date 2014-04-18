@@ -1,12 +1,5 @@
-
-. build websocket/ajax system for send position to an serverside application
-
-. draw circle in map similar to the Button icon
-
-. option maxzoom
-
-. option autozoom enable or disable
-
-. option timeout autoTracking
-
-. use gps accuracy property for circle radius/color
+Tasks found in: src/leaflet-gps.js
+    [Line: 44] [low] 		//TODO add gpsLayer
+    [Line: 45] [low] 		//TODO timeout autoCenter		
+    [Line: 120] [low] 		//TODO make method .hide() using _icon.style.display = 'none'
+    [Line: 125] [low]     	//TODO use e.accuracy for gps circle radius/color

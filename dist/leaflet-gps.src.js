@@ -1,3 +1,19 @@
+/* 
+ * Leaflet Control GPS v1.0.0 - 2014-04-18 
+ * 
+ * Copyright 2014 Stefano Cudini 
+ * stefano.cudini@gmail.com 
+ * http://labs.easyblog.it/ 
+ * 
+ * Licensed under the MIT license. 
+ * 
+ * Demos: 
+ * http://labs.easyblog.it/maps/leaflet-gps/ 
+ * 
+ * Source: 
+ * git@github.com:stefanocudini/leaflet-gps.git 
+ * 
+ */
 /*
  * Leaflet Gps Control 1.1.0
  * http://labs.easyblog.it/maps/leaflet-gps
@@ -17,19 +33,21 @@ L.Control.Gps = L.Control.extend({
 	//
 	//Managed Events:
 	//	Event			Data passed			Description
+	//
 	//	gpslocated		{latlng, marker}	fired after gps marker is located
 	//	gpsdisabled							fired after gps is disabled
 	//
 	//Methods exposed:
-	//	method 			Description
+	//	Method 			Description
+	//
 	//  getLocation		return Latlng and marker of current position
 	//  activate		active tracking on runtime
 	//  deactivate		deactive tracking on runtime
 	//
 	options: {		
 		autoActive: false,		//activate control at startup
-		autoTracking: false,	//move map when gps location change
-		maxZoom: null,			//max zoom for autoTracking
+		autoCenter: false,		//move map when gps location change
+		maxZoom: null,			//max zoom for autoCenter
 		marker: null,			//L.Marker used for location, default use a L.CircleMarker
 		textErr: null,			//error message on alert notification
 		callErr: null,			//function that run on gps error activating
@@ -40,7 +58,7 @@ L.Control.Gps = L.Control.extend({
 		title: 'Center map on your location',
 		position: 'topleft'
 		//TODO add gpsLayer
-		//TODO timeout autoTracking		
+		//TODO timeout autoCenter		
 	},
 
 	initialize: function(options) {
@@ -49,6 +67,7 @@ L.Control.Gps = L.Control.extend({
 		L.Util.setOptions(this, options);
 		this._errorFunc = this.options.callErr || this.showAlert;
 		this._isActive = false;//global state of gps
+		this._firstMoved = false;//global state of gps
 		this._currentLocation = null;	//store last location
 	},
 	
@@ -69,7 +88,6 @@ L.Control.Gps = L.Control.extend({
 		this._alert.style.display = 'none';
 
 		this._gpsMarker = this.options.marker ? this.options.marker : new L.CircleMarker([0,0], this.options.style);
-		this._map.addLayer( this._gpsMarker );
 		
 		this._map
 			.on('locationfound', this._drawGps, this)
@@ -98,9 +116,10 @@ L.Control.Gps = L.Control.extend({
     
     activate: function() {
 	    this._isActive = true;
+		this._map.addLayer( this._gpsMarker );
 	    this._map.locate({
 	        enableHighAccuracy: true,
-			watch: this.options.autoTracking,
+			watch: true,
 			//maximumAge:s
 	        setView: false,	//automatically sets the map view to the user location
 			maxZoom: this.options.maxZoom   
@@ -109,9 +128,11 @@ L.Control.Gps = L.Control.extend({
     
     deactivate: function() {
    		this._isActive = false;    
+		this._firstMoved = false;
 		this._map.stopLocate();
     	L.DomUtil.removeClass(this._button, 'active');
-		this._gpsMarker.setLatLng([-90,0]);  //move to antarctica!
+    	this._map.removeLayer( this._gpsMarker );
+		//this._gpsMarker.setLatLng([-90,0]);  //move to antarctica!
 		//TODO make method .hide() using _icon.style.display = 'none'
 		this.fire('gpsdisabled');
     },
@@ -119,13 +140,11 @@ L.Control.Gps = L.Control.extend({
     _drawGps: function(e) {
     	//TODO use e.accuracy for gps circle radius/color
     	this._currentLocation = e.latlng;
-    	
-    	//TODO add new event here
-    	
-    	if(this.options.autoTracking || this._isActive)
-			this._moveTo(e.latlng);
 			
     	this._gpsMarker.setLatLng(e.latlng);
+
+    	if(this._isActive && (!this._firstMoved || this.options.autoCenter))
+			this._moveTo(e.latlng);
 //    	if(this._gpsMarker.accuracyCircle)
 //    		this._gpsMarker.accuracyCircle.setRadius((e.accuracy / 2).toFixed(0));
     		
@@ -135,6 +154,7 @@ L.Control.Gps = L.Control.extend({
     },
     
     _moveTo: function(latlng) {
+    	this._firstMoved = true;
 		if(this.options.maxZoom)
 			this._map.setView(latlng, Math.min(this._map.getZoom(), this.options.maxZoom) );
 		else
