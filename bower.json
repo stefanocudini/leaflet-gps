@@ -1,0 +1,12 @@
+{
+  "name": "leaflet-gps",
+  "version": "1.0.0",
+  "main": "dist/leaflet-gps.min.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components",
+    "bower_components",
+    "examples"
+  ]
+}
