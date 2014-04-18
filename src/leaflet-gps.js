@@ -1,13 +1,3 @@
-/*
- * Leaflet Gps Control 1.1.0
- * http://labs.easyblog.it/maps/leaflet-gps
- *
- * https://github.com/stefanocudini/leaflet-gps
- * https://bitbucket.org/zakis_/leaflet-gps 
- *
- * Copyright 2013, Stefano Cudini - stefano.cudini@gmail.com
- * Licensed under the MIT license.
- */
 
 (function() {
 
