@@ -1,5 +1,5 @@
 /* 
- * Leaflet Control GPS v1.0.0 - 2014-09-03 
+ * Leaflet Control GPS v1.0.0 - 2014-09-05 
  * 
  * Copyright 2014 Stefano Cudini 
  * stefano.cudini@gmail.com 
@@ -40,7 +40,8 @@
       marker: null, //L.Marker used for location, default use a L.CircleMarker
       textErr: null, //error message on alert notification
       callErr: null, //function that run on gps error activating
-      style: {radius: 16, //marker circle style
+      radius: 2, //marker circle style
+      style: {
         weight: 3,
         color: '#e03',
         fill: false},
@@ -75,15 +76,23 @@
       this._alert.style.display = 'none';
 
       this._gpsMarker = this.options.marker ? this.options.marker : new L.CircleMarker([0, 0], this.options.style);
+      this._updateRadius();
 
       this._map
               .on('locationfound', this._drawGps, this)
-              .on('locationerror', this._errorGps, this);
+              .on('locationerror', this._errorGps, this)
+              .on('zoomend', this._updateRadius, this );
 
       if (this.options.autoActive)
         this.activate();
 
       return container;
+    },
+    _updateRadius: function (event) {
+      var newZoom = this._map.getZoom(),
+          scale = this._map.options.crs.scale(newZoom);
+      this._gpsMarker.setRadius(this.options.radius * scale);
+      this._gpsMarker.redraw();
     },
     onRemove: function(map) {
       this.deactivate();
