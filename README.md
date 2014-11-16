@@ -3,7 +3,7 @@ Leaflet.Control.GPS
 
 A leaflet control plugin for tracking gps position
 
-Tested in Leaflet 0.7
+Tested in Leaflet 0.7.3
 
 **Demos online:**  
 [labs.easyblog.it/maps/leaflet-gps](http://labs.easyblog.it/maps/leaflet-gps/)
