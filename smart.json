@@ -3,6 +3,6 @@
 	"description": "Leaflet Control plugin for tracking gps position, with more options",
 	"homepage": "http://labs.easyblog.it/maps/leaflet-gps/",
 	"author": "Stefano Cudini <stefano.cudini@gmail.com>",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"git": "https://github.com/stefanocudini/leaflet-gps.git"
 }

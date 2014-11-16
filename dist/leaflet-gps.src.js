@@ -1,5 +1,5 @@
 /* 
- * Leaflet Control GPS v1.0.0 - 2014-04-18 
+ * Leaflet Control GPS v1.0.1 - 2014-11-16 
  * 
  * Copyright 2014 Stefano Cudini 
  * stefano.cudini@gmail.com 
@@ -38,13 +38,18 @@ L.Control.Gps = L.Control.extend({
 		autoActive: false,		//activate control at startup
 		autoCenter: false,		//move map when gps location change
 		maxZoom: null,			//max zoom for autoCenter
-		marker: null,			//L.Marker used for location, default use a L.CircleMarker
 		textErr: null,			//error message on alert notification
 		callErr: null,			//function that run on gps error activating
-		style: {radius: 16,		//marker circle style
-				weight:3,
-				color: '#e03',
-				fill: false},
+		marker: null,			//L.Marker used for location, default use a L.CircleMarker
+		style: {				//L.CircleMarker styles
+			radius: 5,		
+			weight: 2,			
+			color: '#c20',
+			opacity: 1,			
+			fillColor: '#f23',
+			fillOpacity: 1			
+		},
+		//accuracy: false,		//show accuracy Circle
 		title: 'Center map on your location',
 		position: 'topleft'
 		//TODO add gpsLayer
@@ -78,10 +83,11 @@ L.Control.Gps = L.Control.extend({
 		this._alert.style.display = 'none';
 
 		this._gpsMarker = this.options.marker ? this.options.marker : new L.CircleMarker([0,0], this.options.style);
+		//this._accuracyCircle = new L.CircleMarker([0,0], this.options.style);
 		
 		this._map
 			.on('locationfound', this._drawGps, this)
-			.on('locationerror', this._errorGps, this);	
+			.on('locationerror', this._errorGps, this);
 			
 		if(this.options.autoActive)
 			this.activate();
@@ -155,7 +161,12 @@ L.Control.Gps = L.Control.extend({
     	this.deactivate();
     	this._errorFunc.call(this, this.options.textErr || e.message);
     },
-    
+	_updateRadius: function (event) {
+		var newZoom = this._map.getZoom(),
+			scale = this._map.options.crs.scale(newZoom);
+		this._gpsMarker.setRadius(this.options.style.radius * scale);
+		this._gpsMarker.redraw();
+	},    
 	showAlert: function(text) {
 		this._alert.style.display = 'block';
 		this._alert.innerHTML = text;
