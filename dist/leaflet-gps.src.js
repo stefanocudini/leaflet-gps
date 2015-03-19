@@ -1,5 +1,5 @@
 /* 
- * Leaflet Control GPS v1.0.1 - 2014-11-16 
+ * Leaflet Control GPS v1.0.1 - 2015-03-18 
  * 
  * Copyright 2014 Stefano Cudini 
  * stefano.cudini@gmail.com 
@@ -51,7 +51,8 @@ L.Control.Gps = L.Control.extend({
 		marker: null,			//L.Marker used for location, default use a L.CircleMarker		
 		accuracy: true,		//show accuracy Circle
 		title: 'Center map on your location',
-		position: 'topleft'
+		position: 'topleft',
+		transform: function(latlng) { return latlng }
 		//TODO add gpsLayer
 		//TODO timeout autoCenter		
 	},
@@ -136,16 +137,16 @@ L.Control.Gps = L.Control.extend({
 
 	_drawGps: function(e) {
 		//TODO use e.accuracy for gps circle radius/color
-		this._currentLocation = e.latlng;
+		this._currentLocation = this.options.transform(e.latlng);
 			
-		this._gpsMarker.setLatLng(e.latlng);
+		this._gpsMarker.setLatLng(this._currentLocation);
 
 		if(this._isActive && (!this._firstMoved || this.options.autoCenter))
-			this._moveTo(e.latlng);
+			this._moveTo(this._currentLocation);
 	//    	if(this._gpsMarker.accuracyCircle)
 	//    		this._gpsMarker.accuracyCircle.setRadius((e.accuracy / 2).toFixed(0));
 			
-		this.fire('gpslocated', {latlng: e.latlng, marker: this._gpsMarker});
+		this.fire('gpslocated', {latlng: this._currentLocation, marker: this._gpsMarker});
 		
 		L.DomUtil.addClass(this._button, 'active');	
 	},
