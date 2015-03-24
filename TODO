@@ -1,5 +1,5 @@
 Tasks found in: src/leaflet-gps.js
-    [Line: 39] [low] 		//TODO add gpsLayer
-    [Line: 40] [low] 		//TODO timeout autoCenter		
-    [Line: 117] [low] 		//TODO make method .hide() using _icon.style.display = 'none'
-    [Line: 122] [low] 		//TODO use e.accuracy for gps circle radius/color
+    [Line: 40] [low] 		//TODO add gpsLayer
+    [Line: 41] [low] 		//TODO timeout autoCenter
+    [Line: 118] [low] 		//TODO make method .hide() using _icon.style.display = 'none'
+    [Line: 123] [low] 		//TODO use e.accuracy for gps circle radius/color

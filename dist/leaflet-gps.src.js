@@ -1,5 +1,5 @@
 /* 
- * Leaflet Control GPS v1.0.1 - 2014-11-16 
+ * Leaflet Control GPS v1.0.1 - 2015-03-24 
  * 
  * Copyright 2014 Stefano Cudini 
  * stefano.cudini@gmail.com 
@@ -19,7 +19,7 @@
 
 L.Control.Gps = L.Control.extend({
 
-	includes: L.Mixin.Events, 
+	includes: L.Mixin.Events,
 	//
 	//Managed Events:
 	//	Event			Data passed			Description
@@ -34,31 +34,32 @@ L.Control.Gps = L.Control.extend({
 	//  activate		active tracking on runtime
 	//  deactivate		deactive tracking on runtime
 	//
-	options: {		
+	options: {
 		autoActive: false,		//activate control at startup
 		autoCenter: false,		//move map when gps location change
 		maxZoom: null,			//max zoom for autoCenter
 		textErr: null,			//error message on alert notification
 		callErr: null,			//function that run on gps error activating
 		style: {				//default L.CircleMarker styles
-			radius: 5,		
-			weight: 2,			
+			radius: 5,
+			weight: 2,
 			color: '#c20',
-			opacity: 1,			
+			opacity: 1,
 			fillColor: '#f23',
-			fillOpacity: 1			
+			fillOpacity: 1
 		},
-		marker: null,			//L.Marker used for location, default use a L.CircleMarker		
+		marker: null,			//L.Marker used for location, default use a L.CircleMarker
 		accuracy: true,		//show accuracy Circle
 		title: 'Center map on your location',
-		position: 'topleft'
+		position: 'topleft',
+		setView: false
 		//TODO add gpsLayer
-		//TODO timeout autoCenter		
+		//TODO timeout autoCenter
 	},
 
 	initialize: function(options) {
 		if(options && options.style)
-			options.style = L.Util.extend({}, this.options.style, options.style); 
+			options.style = L.Util.extend({}, this.options.style, options.style);
 		L.Util.setOptions(this, options);
 		this._errorFunc = this.options.callErr || this.showAlert;
 		this._isActive = false;//global state of gps
@@ -68,8 +69,8 @@ L.Control.Gps = L.Control.extend({
 
 	onAdd: function (map) {
 
-		this._map = map;	
-			
+		this._map = map;
+
 		var container = L.DomUtil.create('div', 'leaflet-control-gps');
 
 		this._button = L.DomUtil.create('a', 'gps-button', container);
@@ -85,11 +86,11 @@ L.Control.Gps = L.Control.extend({
 		this._gpsMarker = this.options.marker ? this.options.marker : new L.CircleMarker([0,0], this.options.style);
 		//if(this.options.accuracy)
 		//	this._accuracyCircle = new L.Circle([0,0], this.options.style);
-		
+
 		this._map
 			.on('locationfound', this._drawGps, this)
 			.on('locationerror', this._errorGps, this);
-			
+
 		if(this.options.autoActive)
 			this.activate();
 
@@ -99,14 +100,14 @@ L.Control.Gps = L.Control.extend({
 	onRemove: function(map) {
 		this.deactivate();
 	},
-	
+
 	_switchGps: function() {
 		if(this._isActive)
 			this.deactivate();
 		else
 			this.activate();
 	},
-	
+
 	getLocation: function() {	//get last location
 		return this._currentLocation;
 	},
@@ -118,13 +119,13 @@ L.Control.Gps = L.Control.extend({
 			enableHighAccuracy: true,
 			watch: true,
 			//maximumAge:s
-			setView: false,	//automatically sets the map view to the user location
-			maxZoom: this.options.maxZoom   
+			setView: this.options.setView,	//automatically sets the map view to the user location
+			maxZoom: this.options.maxZoom
 		});
 	},
 
 	deactivate: function() {
-			this._isActive = false;    
+			this._isActive = false;
 		this._firstMoved = false;
 		this._map.stopLocate();
 		L.DomUtil.removeClass(this._button, 'active');
@@ -137,17 +138,17 @@ L.Control.Gps = L.Control.extend({
 	_drawGps: function(e) {
 		//TODO use e.accuracy for gps circle radius/color
 		this._currentLocation = e.latlng;
-			
+
 		this._gpsMarker.setLatLng(e.latlng);
 
 		if(this._isActive && (!this._firstMoved || this.options.autoCenter))
 			this._moveTo(e.latlng);
 	//    	if(this._gpsMarker.accuracyCircle)
 	//    		this._gpsMarker.accuracyCircle.setRadius((e.accuracy / 2).toFixed(0));
-			
+
 		this.fire('gpslocated', {latlng: e.latlng, marker: this._gpsMarker});
-		
-		L.DomUtil.addClass(this._button, 'active');	
+
+		L.DomUtil.addClass(this._button, 'active');
 	},
 
 	_moveTo: function(latlng) {
@@ -155,7 +156,7 @@ L.Control.Gps = L.Control.extend({
 		if(this.options.maxZoom)
 			this._map.setView(latlng, Math.min(this._map.getZoom(), this.options.maxZoom) );
 		else
-			this._map.panTo(latlng);    
+			this._map.panTo(latlng);
 	},
 
 	_errorGps: function(e) {
