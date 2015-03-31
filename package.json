@@ -1,6 +1,6 @@
 {
   "name": "leaflet-gps",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Leaflet Control plugin for tracking gps position, with more options",
   "repository": {
     "type": "git",
