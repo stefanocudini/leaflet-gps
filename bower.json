@@ -1,6 +1,6 @@
 {
   "name": "leaflet-gps",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "dist/leaflet-gps.min.js",
   "ignore": [
     "**/.*",
