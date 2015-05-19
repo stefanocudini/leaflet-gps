@@ -19,6 +19,7 @@
     "gps",
     "leaflet"
   ],
+  "main": "src/leaflet-gps.js",
   "dependencies": {
     "leaflet": "*"
   },
