@@ -1,5 +1,5 @@
 Package.describe({
-	summary: "Leaflet Control plugin for tracking gps position, with more options"
+	summary: "Leaflet Control plugin for tracking gps position, with more options",
 	name: "stefcud:leaflet-gps",
 	version: "1.0.2",
 	summary: "Leaflet Control GPS",
