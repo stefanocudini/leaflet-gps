@@ -8,7 +8,6 @@ grunt.loadNpmTasks('grunt-contrib-clean');
 grunt.loadNpmTasks('grunt-contrib-cssmin');
 grunt.loadNpmTasks('grunt-contrib-jshint');
 grunt.loadNpmTasks('grunt-contrib-watch');
-grunt.loadNpmTasks('grunt-todos');
 
 grunt.initConfig({
 	pkg: grunt.file.readJSON('package.json'),
@@ -17,7 +16,7 @@ grunt.initConfig({
 		'/* \n'+
 		' * Leaflet Control GPS v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %> \n'+
 		' * \n'+
-		' * Copyright 2014 <%= pkg.author.name %> \n'+
+		' * Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author.name %> \n'+
 		' * <%= pkg.author.email %> \n'+
 		' * <%= pkg.author.url %> \n'+
 		' * \n'+
@@ -87,10 +86,6 @@ grunt.initConfig({
 			}
 		}
 	},
-	todos: {
-		options: { verbose: false },
-		TODO: ['src/*.js'],
-	},	
 	watch: {
 		dist: {
 			options: { livereload: true },
@@ -105,8 +100,7 @@ grunt.registerTask('default', [
 	'concat',	
 	'cssmin',
 	'jshint',
-	'uglify',
-	'todos'
+	'uglify'
 ]);
 
 };
