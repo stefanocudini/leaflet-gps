@@ -167,6 +167,12 @@ L.Control.Gps = L.Control.extend({
 	}
 });
 
+L.Map.addInitHook(function () {
+	if (this.options.gpsControl) {
+		this.gpsControl = L.control.gps(this.options.gpsControlOptions);
+		this.addControl(this.gpsControl);
+	}
+});
 L.control.gps = function (options) {
 	return new L.Control.Gps(options);
 };

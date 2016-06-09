@@ -5,6 +5,7 @@ module.exports = function(grunt) {
 grunt.loadNpmTasks('grunt-contrib-uglify');
 grunt.loadNpmTasks('grunt-contrib-concat');
 grunt.loadNpmTasks('grunt-contrib-clean');
+grunt.loadNpmTasks('grunt-contrib-copy');
 grunt.loadNpmTasks('grunt-contrib-cssmin');
 grunt.loadNpmTasks('grunt-contrib-jshint');
 grunt.loadNpmTasks('grunt-contrib-watch');
@@ -59,6 +60,12 @@ grunt.initConfig({
 			}
 		}
 	},
+	copy: {
+		images: {
+			src: 'images/gps-icon.png',
+			dest: 'dist/gps-icon.png'
+		}
+	},
 	uglify: {
 		options: {
 			banner: '<%= meta.banner %>'
@@ -90,13 +97,14 @@ grunt.initConfig({
 		dist: {
 			options: { livereload: true },
 			files: ['src/*'],
-			tasks: ['clean','concat','cssmin','jshint']
+			tasks: ['clean','concat','cssmin','jshint', 'copy']
 		}		
 	}
 });
 
 grunt.registerTask('default', [
 	'clean',
+	'copy',
 	'concat',	
 	'cssmin',
 	'jshint',
