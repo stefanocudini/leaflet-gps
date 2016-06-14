@@ -1,5 +1,5 @@
 /* 
- * Leaflet Control GPS v1.0.2 - 2016-06-10 
+ * Leaflet Control GPS v1.1.0 - 2016-06-14 
  * 
  * Copyright 2016 Stefano Cudini 
  * stefano.cudini@gmail.com 
