@@ -1,5 +1,5 @@
 /* 
- * Leaflet Control GPS v1.0.2 - 2016-05-16 
+ * Leaflet Control GPS v1.0.2 - 2016-06-10 
  * 
  * Copyright 2016 Stefano Cudini 
  * stefano.cudini@gmail.com 
@@ -183,6 +183,12 @@ L.Control.Gps = L.Control.extend({
 	}
 });
 
+L.Map.addInitHook(function () {
+	if (this.options.gpsControl) {
+		this.gpsControl = L.control.gps(this.options.gpsControlOptions);
+		this.addControl(this.gpsControl);
+	}
+});
 L.control.gps = function (options) {
 	return new L.Control.Gps(options);
 };
