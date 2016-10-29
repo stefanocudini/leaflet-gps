@@ -20,8 +20,8 @@ L.Control.Gps = L.Control.extend({
 	//Managed Events:
 	//	Event			Data passed			Description
 	//
-	//	gpslocated		{latlng, marker}	fired after gps marker is located
-	//	gpsdisabled							fired after gps is disabled
+	//	gps:located		{latlng, marker}	fired after gps marker is located
+	//	gps:disabled							fired after gps is disabled
 	//
 	//Methods exposed:
 	//	Method 			Description
@@ -129,7 +129,7 @@ L.Control.Gps = L.Control.extend({
 		this._map.removeLayer( this._gpsMarker );
 		//this._gpsMarker.setLatLng([-90,0]);  //move to antarctica!
 		//TODO make method .hide() using _icon.style.display = 'none'
-		this.fire('gpsdisabled');
+		this.fire('gps:disabled');
 	},
 
 	_drawGps: function(e) {
@@ -143,7 +143,7 @@ L.Control.Gps = L.Control.extend({
 	//    	if(this._gpsMarker.accuracyCircle)
 	//    		this._gpsMarker.accuracyCircle.setRadius((e.accuracy / 2).toFixed(0));
 			
-		this.fire('gpslocated', {latlng: this._currentLocation, marker: this._gpsMarker});
+		this.fire('gps:located', {latlng: this._currentLocation, marker: this._gpsMarker});
 		
 		L.DomUtil.addClass(this._button, 'active');
 	},
