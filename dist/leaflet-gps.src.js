@@ -1,5 +1,5 @@
 /* 
- * Leaflet Control GPS v1.1.0 - 2016-06-14 
+ * Leaflet Control GPS v1.2.0 - 2016-10-29 
  * 
  * Copyright 2016 Stefano Cudini 
  * stefano.cudini@gmail.com 
@@ -14,8 +14,20 @@
  * git@github.com:stefanocudini/leaflet-gps.git 
  * 
  */
-
-(function() {
+(function (factory) {
+    if(typeof define === 'function' && define.amd) {
+    //AMD
+        define(['leaflet'], factory);
+    } else if(typeof module !== 'undefined') {
+    // Node/CommonJS
+        module.exports = factory(require('leaflet'));
+    } else {
+    // Browser globals
+        if(typeof window.L === 'undefined')
+            throw 'Leaflet must be loaded first';
+        factory(window.L);
+    }
+})(function (L) {
 
 L.Control.Gps = L.Control.extend({
 
@@ -165,13 +177,13 @@ L.Control.Gps = L.Control.extend({
 		this._errorFunc.call(this, this.options.textErr || e.message);
 	},
 
-/*	_updateAccuracy: function (event) {
-		var newZoom = this._map.getZoom(),
-			scale = this._map.options.crs.scale(newZoom);
-		this._gpsMarker.setRadius(this.options.style.radius * scale);
-		this._gpsMarker.redraw();
-	},
-*/
+	/*	_updateAccuracy: function (event) {
+			var newZoom = this._map.getZoom(),
+				scale = this._map.options.crs.scale(newZoom);
+			this._gpsMarker.setRadius(this.options.style.radius * scale);
+			this._gpsMarker.redraw();
+		},
+	*/
 	showAlert: function(text) {
 		this._alert.style.display = 'block';
 		this._alert.innerHTML = text;
@@ -185,12 +197,15 @@ L.Control.Gps = L.Control.extend({
 
 L.Map.addInitHook(function () {
 	if (this.options.gpsControl) {
-		this.gpsControl = L.control.gps(this.options.gpsControlOptions);
+		this.gpsControl = L.control.gps(this.options.gpsControl);
 		this.addControl(this.gpsControl);
 	}
 });
+
 L.control.gps = function (options) {
 	return new L.Control.Gps(options);
 };
 
-}).call(this);
+return L.Control.Gps;
+
+});
