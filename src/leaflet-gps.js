@@ -175,7 +175,7 @@ L.Control.Gps = L.Control.extend({
 		clearTimeout(this.timerAlert);
 		this.timerAlert = setTimeout(function() {
 			that._alert.style.display = 'none';
-		}, 2000);
+		}, 5000);
 	}
 });
 

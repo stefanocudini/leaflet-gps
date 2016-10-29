@@ -28,16 +28,16 @@ Using Chrome extension for testing:
 	var map = new L.Map('map', {zoom: 12, center: new L.latLng([41.575730,13.002411]) });
 
 	map.addLayer(new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'));	//base layer
-
-	var newStyle = {
-		weight:4,
-		radius: 25,
-		color: '#f0c',
-		fill: true,
-		opacity:0.8
-	};
 	
-	map.addControl( new L.Control.Gps({style: newStyle }) );//inizialize control
+	map.addControl(new L.Control.Gps({
+		style: {
+			weight:4,
+			radius: 25,
+			color: '#f0c',
+			fill: true,
+			opacity:0.8
+		}
+	}));
 
 </script>
 
