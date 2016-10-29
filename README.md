@@ -37,6 +37,6 @@ map.addControl( new L.Control.Gps( { transform: function(realGps) { return tinne
 
 **Source code:**  
 [Github](https://github.com/stefanocudini/leaflet-gps)  
-[Bitbucket](https://bitbucket.org/zakis_/leaflet-gps)  
+[Bitbucket](https://bitbucket.org/stefanocudini/leaflet-gps)  
 [NPM](https://npmjs.org/package/leaflet-gps)  
 [Atmosphere](https://atmosphere.meteor.com/package/leaflet-gps)
