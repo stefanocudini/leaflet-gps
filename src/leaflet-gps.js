@@ -96,6 +96,9 @@ L.Control.Gps = L.Control.extend({
 
 	onRemove: function(map) {
 		this.deactivate();
+
+		map.off('locationfound', this._drawGps, this)
+		   .off('locationerror', this._errorGps, this);
 	},
 
 	_switchGps: function() {
@@ -124,9 +127,14 @@ L.Control.Gps = L.Control.extend({
 	deactivate: function() {
 			this._isActive = false;
 		this._firstMoved = false;
-		this._map.stopLocate();
+		
 		L.DomUtil.removeClass(this._button, 'active');
-		this._map.removeLayer( this._gpsMarker );
+
+		if(this._map) {
+			this._map.stopLocate();
+			this._map.removeLayer( this._gpsMarker );
+		}		
+		
 		//this._gpsMarker.setLatLng([-90,0]);  //move to antarctica!
 		//TODO make method .hide() using _icon.style.display = 'none'
 		this.fire('gps:disabled');
