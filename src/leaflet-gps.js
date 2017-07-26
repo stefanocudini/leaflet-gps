@@ -49,7 +49,7 @@ L.Control.Gps = L.Control.extend({
 		title: 'Center map on your location',
 		position: 'topleft',
 		transform: function(latlng) { return latlng },
-		setView: false
+		setView: false //automatically sets the map view to the user location
 		//TODO add gpsLayer
 		//TODO timeout autoCenter
 	},
@@ -119,7 +119,7 @@ L.Control.Gps = L.Control.extend({
 			enableHighAccuracy: true,
 			watch: true,
 			//maximumAge:s
-			setView: this.options.setView,	//automatically sets the map view to the user location
+			setView: this.options.setView,
 			maxZoom: this.options.maxZoom
 		});
 	},
