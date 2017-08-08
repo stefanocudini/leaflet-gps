@@ -3,7 +3,7 @@ Leaflet.Control.GPS
 
 A leaflet control plugin for tracking gps position
 
-Tested in Leaflet 0.7.3
+Tested in Leaflet 0.7.7 and 1.1.0
 
 **Demos online:**  
 [labs.easyblog.it/maps/leaflet-gps](http://labs.easyblog.it/maps/leaflet-gps/)
@@ -60,8 +60,8 @@ map.addControl( new L.Control.Gps( { transform: function(realGps) { return tinne
 # Events
 | Event			 | Data			  | Description                               |
 | ---------------------- | ---------------------- | ----------------------------------------- |
-| 'gps:located' | {latlng, marker} | fired after gps marker is located |
-| 'gps:disabled'	 | {}	                  | fired after gps is disabled          |
+| 'gps:located' | {marker, latlng} | fired after gps marker is located |
+| 'gps:disabled'	 | {marker}	                  | fired after gps is disabled          |
 
 # Methods
 | Method		| Arguments		 | Description                  |

@@ -4,7 +4,9 @@
 <title>Leaflet.Control.Gps - Simple Example</title> 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-<link rel="stylesheet" href="/maps/leaflet/dist/leaflet.css" />
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" />
+
 <link rel="stylesheet" href="../src/leaflet-gps.css" />
 <link rel="stylesheet" href="style.css" />
 </head>
@@ -21,15 +23,28 @@ Using Chrome extension for testing:
 <a href="https://chrome.google.com/webstore/detail/manual-geolocation/mfodligkojepnddfhkbkodbamcagfhlo">Manual Geolocation</a>
 </small>
 
-<script src="/maps/leaflet/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js"></script>
 <script src="../src/leaflet-gps.js"></script>
 <script>
 
-	var map = new L.Map('map', {zoom: 12, center: new L.latLng([41.575730,13.002411]) });
+	var map = new L.Map('map', {
+		zoom: 12,
+		center: new L.latLng([41.575730,13.002411])
+	});
 
 	map.addLayer(new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'));	//base layer
 
-	map.addControl( new L.Control.Gps({autoActive:true}) );//inizialize control
+	var gps = new L.Control.Gps({autoActive:true,autoCenter:true});//inizialize control
+
+	gps
+	.on('gps:located', function(e) {
+		e.marker.bindPopup(e.latlng.toString()).openPopup()
+	})
+	.on('gps:disabled', function(e) {
+		e.marker.closePopup()
+	})
+
+	gps.addTo(map);
 
 </script>
 
