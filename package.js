@@ -2,7 +2,7 @@
 Package.describe({
 	summary: "Leaflet Control plugin for tracking gps position, with more options",
 	name: "stefcud:leaflet-gps",
-	version: "1.6.0",
+	version: "1.7.0",
 	git: "https://github.com/stefanocudini/leaflet-gps.git"
 });
 

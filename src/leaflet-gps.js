@@ -22,6 +22,7 @@ L.Control.Gps = L.Control.extend({
 	//
 	//	gps:located		{marker,latlng}	 	fired after gps marker is located
 	//	gps:disabled	{marker}			fired after gps is disabled
+	//	gps:error	    {message}			fired after gps error
 	//
 	//Methods exposed:
 	//	Method 			Description
@@ -58,7 +59,8 @@ L.Control.Gps = L.Control.extend({
 			options.style = L.Util.extend({}, this.options.style, options.style);
 		L.Util.setOptions(this, options);
 		this._errorFunc = this.options.callErr || this.showAlert;
-		this._isActive = false;//global state of gps
+		this._isActive = false;
+		this._isLoading = false;
 		this._currentLocation = null;	//store last location
 	},
 
@@ -102,7 +104,7 @@ L.Control.Gps = L.Control.extend({
 	},
 
 	_switchGps: function() {
-		if(this._isActive)
+		if(this._isActive || this._isLoading)
 			this.deactivate();
 		else
 			this.activate();
@@ -113,25 +115,41 @@ L.Control.Gps = L.Control.extend({
 	},
 
 	activate: function() {
+
 		this._isActive = true;
+		this._isLoading = true;
 		this._map.addLayer( this._gpsMarker );
-		this._map.locate({
-			enableHighAccuracy: true,
-			watch: true,
-			setView: this.options.autoCenter,
-			maxZoom: this.options.maxZoom || this._map.getZoom()
-			//maximumAge:s
-		});
+
+		L.DomUtil.addClass(this._button, 'loading');
+		
 		this._map.once('locationfound', function(e) {
-			this._map.panTo(e.latlng);
+			
+			L.DomUtil.removeClass(this._button, 'loading');
+			L.DomUtil.removeClass(this._button, 'disabled');
+			L.DomUtil.addClass(this._button, 'active');
+
+			this._isLoading = false;
+			
+			if(this.options.autoCenter)
+				this._map.setView(e.latlng, this.options.maxZoom || this._map.getZoom());
+
 		}, this);
+
+		this._map.locate({
+			enableHighAccuracy: false,
+			watch: true,
+			setView: false,//this.options.autoCenter,
+			//maxZoom: this.options.maxZoom || this._map.getZoom()
+		});
 	},
 
 	deactivate: function() {
 		
 		this._isActive = false;
+		this._isLoading = false;
 		
 		L.DomUtil.removeClass(this._button, 'active');
+		L.DomUtil.removeClass(this._button, 'loading');
 
 		if(this._map) {
 			this._map.stopLocate();
@@ -149,6 +167,9 @@ L.Control.Gps = L.Control.extend({
 		
 		this._gpsMarker.setLatLng(this._currentLocation);
 
+		if(this.options.autoCenter)
+			this._map.panTo(e.latlng);
+
 	//    	if(this._gpsMarker.accuracyCircle)
 	//    		this._gpsMarker.accuracyCircle.setRadius((e.accuracy / 2).toFixed(0));
 			
@@ -156,12 +177,15 @@ L.Control.Gps = L.Control.extend({
 			latlng: this._currentLocation,
 			marker: this._gpsMarker
 		});
-		
-		L.DomUtil.addClass(this._button, 'active');
 	},
 
 	_errorGps: function(e) {
+		this.fire('gps:error', e);
+
 		this.deactivate();
+		
+		L.DomUtil.addClass(this._button, 'disabled');
+
 		this._errorFunc.call(this, this.options.textErr || e.message);
 	},
 
