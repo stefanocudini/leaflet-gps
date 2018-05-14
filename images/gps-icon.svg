@@ -11,7 +11,7 @@
    width="24"
    height="76"
    id="svg2"
-   inkscape:version="0.48.5 r10040"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
    sodipodi:docname="gps-icon.svg"
    inkscape:export-filename="/home/z4k/www/maps/leaflet-gps/images/gps-icon.png"
    inkscape:export-xdpi="102.05368"
@@ -24,7 +24,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -42,7 +42,7 @@
      id="namedview21"
      showgrid="false"
      inkscape:zoom="6.9532167"
-     inkscape:cx="18.724505"
+     inkscape:cx="-6.8751574"
      inkscape:cy="23.977181"
      inkscape:window-x="671"
      inkscape:window-y="39"
@@ -113,8 +113,7 @@
        sodipodi:cy="24"
        sodipodi:rx="5"
        sodipodi:ry="5"
-       style="fill:#ff0000;stroke:none;display:none"
-       d="m 29,24 c 0,2.761424 -2.238576,5 -5,5 -2.761424,0 -5,-2.238576 -5,-5 0,-2.761424 2.238576,-5 5,-5 2.761424,0 5,2.238576 5,5 z" />
+       style="fill:#ff0000;stroke:none;display:none" />
     <g
        style="stroke-width:3;stroke-miterlimit:4;stroke-dasharray:none"
        class="active"
@@ -131,169 +130,118 @@
          sodipodi:cx="24"
          sodipodi:cy="24"
          sodipodi:rx="5"
-         sodipodi:ry="5"
-         d="m 29,24 c 0,2.761424 -2.238576,5 -5,5 -2.761424,0 -5,-2.238576 -5,-5 0,-2.761424 2.238576,-5 5,-5 2.761424,0 5,2.238576 5,5 z" />
+         sodipodi:ry="5" />
     </g>
-    <g
-       id="g3940">
-      <circle
-         inkscape:export-ydpi="99.45063"
-         inkscape:export-xdpi="99.45063"
-         inkscape:export-filename="/home/z4k/www/maps/leaflet-gps/images/g3902.png"
-         transform="matrix(0.52090395,0,0,0.52090395,-0.53190286,-28.457764)"
-         d="M 41,24 C 41,33.388841 33.388841,41 24,41 14.611159,41 7,33.388841 7,24 7,14.611159 14.611159,7 24,7 c 9.388841,0 17,7.611159 17,17 z"
-         sodipodi:ry="17"
-         sodipodi:rx="17"
-         sodipodi:cy="24"
-         sodipodi:cx="24"
-         style="fill:none;stroke:#000000;stroke-width:2.87960958;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-         id="circle9"
-         class="layout"
-         r="17"
-         cy="24"
-         cx="24" />
-      <g
-         inkscape:export-ydpi="99.45063"
-         inkscape:export-xdpi="99.45063"
-         style="stroke-width:1.45991993;stroke-miterlimit:4;stroke-dasharray:none"
-         transform="matrix(1.0012467,0,0,1.0012467,0.06626665,-0.22496325)"
-         id="g3902">
-        <path
-           style="fill:none;stroke:#000000;stroke-width:1.45991993;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-           d="m 1.6430699,-15.711519 4.7285567,0"
-           id="path3846"
-           inkscape:connector-curvature="0"
-           sodipodi:nodetypes="cc" />
-        <path
-           sodipodi:nodetypes="cc"
-           inkscape:connector-curvature="0"
-           id="path3896"
-           d="m 11.888704,-5.4658847 0,-4.7285563"
-           style="fill:none;stroke:#000000;stroke-width:1.45991993;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-           inkscape:transform-center-y="7.8813561" />
-        <path
-           style="fill:none;stroke:#000000;stroke-width:1.45991993;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-           d="m 22.134338,-15.711519 -4.728556,0"
-           id="path3898"
-           inkscape:connector-curvature="0"
-           sodipodi:nodetypes="cc"
-           inkscape:transform-center-x="-7.881356" />
-        <path
-           sodipodi:nodetypes="cc"
-           inkscape:connector-curvature="0"
-           id="path3900"
-           d="m 11.888704,-25.957153 0,4.728556"
-           style="fill:none;stroke:#000000;stroke-width:1.45991993;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-           inkscape:transform-center-y="-7.881356" />
-      </g>
-    </g>
-    <g
-       id="g3932">
-      <circle
-         cx="24"
-         cy="24"
-         r="17"
-         class="layout"
-         id="circle3920"
-         style="fill:none;stroke:#000000;stroke-width:2.87960958;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-         sodipodi:cx="24"
-         sodipodi:cy="24"
-         sodipodi:rx="17"
-         sodipodi:ry="17"
-         d="M 41,24 C 41,33.388841 33.388841,41 24,41 14.611159,41 7,33.388841 7,24 7,14.611159 14.611159,7 24,7 c 9.388841,0 17,7.611159 17,17 z"
-         transform="matrix(0.52090395,0,0,0.52090395,-0.53190286,23.533695)"
-         inkscape:export-filename="/home/z4k/www/maps/leaflet-gps/images/g3902.png"
-         inkscape:export-xdpi="99.45063"
-         inkscape:export-ydpi="99.45063" />
-      <g
-         id="g3922"
-         transform="matrix(1.0012467,0,0,1.0012467,0.06626665,51.766496)"
-         style="stroke-width:1.45991993;stroke-miterlimit:4;stroke-dasharray:none"
-         inkscape:export-xdpi="99.45063"
-         inkscape:export-ydpi="99.45063">
-        <path
-           sodipodi:nodetypes="cc"
-           inkscape:connector-curvature="0"
-           id="path3924"
-           d="m 1.6430699,-15.711519 4.7285567,0"
-           style="fill:none;stroke:#000000;stroke-width:1.45991993;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
-        <path
-           inkscape:transform-center-y="7.8813561"
-           style="fill:none;stroke:#000000;stroke-width:1.45991993;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-           d="m 11.888704,-5.4658847 0,-4.7285563"
-           id="path3926"
-           inkscape:connector-curvature="0"
-           sodipodi:nodetypes="cc" />
-        <path
-           inkscape:transform-center-x="-7.881356"
-           sodipodi:nodetypes="cc"
-           inkscape:connector-curvature="0"
-           id="path3928"
-           d="m 22.134338,-15.711519 -4.728556,0"
-           style="fill:none;stroke:#000000;stroke-width:1.45991993;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
-        <path
-           inkscape:transform-center-y="-7.881356"
-           style="fill:none;stroke:#000000;stroke-width:1.45991993;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-           d="m 11.888704,-25.957153 0,4.728556"
-           id="path3930"
-           inkscape:connector-curvature="0"
-           sodipodi:nodetypes="cc" />
-      </g>
-    </g>
-    <g
-       id="g3948"
-       transform="translate(0,25.995732)"
-       style="stroke:#959595;stroke-opacity:1">
-      <circle
-         cx="24"
-         cy="24"
-         r="17"
-         class="layout"
-         id="circle3950"
-         style="fill:none;stroke:#959595;stroke-width:2.87960957999999989;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-         sodipodi:cx="24"
-         sodipodi:cy="24"
-         sodipodi:rx="17"
-         sodipodi:ry="17"
-         d="M 41,24 C 41,33.388841 33.388841,41 24,41 14.611159,41 7,33.388841 7,24 7,14.611159 14.611159,7 24,7 c 9.388841,0 17,7.611159 17,17 z"
-         transform="matrix(0.52090395,0,0,0.52090395,-0.53190286,-28.457764)"
-         inkscape:export-filename="/home/z4k/www/maps/leaflet-gps/images/g3902.png"
-         inkscape:export-xdpi="99.45063"
-         inkscape:export-ydpi="99.45063" />
-      <g
-         id="g3952"
-         transform="matrix(1.0012467,0,0,1.0012467,0.06626665,-0.22496325)"
-         style="stroke-width:1.45991993000000009;stroke-miterlimit:4;stroke-dasharray:none;stroke:#959595;stroke-opacity:1"
-         inkscape:export-xdpi="99.45063"
-         inkscape:export-ydpi="99.45063">
-        <path
-           sodipodi:nodetypes="cc"
-           inkscape:connector-curvature="0"
-           id="path3954"
-           d="m 1.6430699,-15.711519 4.7285567,0"
-           style="fill:none;stroke:#959595;stroke-width:1.45991993000000009;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
-        <path
-           inkscape:transform-center-y="7.8813561"
-           style="fill:none;stroke:#959595;stroke-width:1.45991993000000009;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-           d="m 11.888704,-5.4658847 0,-4.7285563"
-           id="path3956"
-           inkscape:connector-curvature="0"
-           sodipodi:nodetypes="cc" />
-        <path
-           inkscape:transform-center-x="-7.881356"
-           sodipodi:nodetypes="cc"
-           inkscape:connector-curvature="0"
-           id="path3958"
-           d="m 22.134338,-15.711519 -4.728556,0"
-           style="fill:none;stroke:#959595;stroke-width:1.45991993000000009;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
-        <path
-           inkscape:transform-center-y="-7.881356"
-           style="fill:none;stroke:#959595;stroke-width:1.45991993000000009;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-           d="m 11.888704,-25.957153 0,4.728556"
-           id="path3960"
-           inkscape:connector-curvature="0"
-           sodipodi:nodetypes="cc" />
-      </g>
-    </g>
+    <circle
+       cx="11.969792"
+       cy="-15.956069"
+       r="8.8553667"
+       class="layout"
+       id="circle9"
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/home/z4k/www/maps/leaflet-gps/images/g3902.png"
+       inkscape:export-xdpi="99.45063"
+       inkscape:export-ydpi="99.45063" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 1.711385,-15.95607 H 6.4458368"
+       id="path3846"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path3896"
+       d="M 11.969792,-5.6976623 V -10.432114"
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:transform-center-y="7.8813561" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 22.2282,-15.95607 H 17.493748"
+       id="path3898"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:transform-center-x="-7.881356" />
+    <path
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path3900"
+       d="m 11.969792,-26.214477 v 4.734451"
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:transform-center-y="-7.881356" />
+    <circle
+       inkscape:export-ydpi="99.45063"
+       inkscape:export-xdpi="99.45063"
+       inkscape:export-filename="/home/z4k/www/maps/leaflet-gps/images/g3902.png"
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="circle3920"
+       class="layout"
+       r="8.8553667"
+       cy="36.035389"
+       cx="11.969792" />
+    <path
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path3924"
+       d="M 1.711385,36.035389 H 6.4458368"
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       inkscape:transform-center-y="7.8813561"
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 11.969792,46.293797 V 41.559346"
+       id="path3926"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       inkscape:transform-center-x="-7.881356"
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path3928"
+       d="M 22.2282,36.035389 H 17.493748"
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       inkscape:transform-center-y="-7.881356"
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 11.969792,25.776982 v 4.734451"
+       id="path3930"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <circle
+       inkscape:export-ydpi="99.45063"
+       inkscape:export-xdpi="99.45063"
+       inkscape:export-filename="/home/z4k/www/maps/leaflet-gps/images/g3902.png"
+       style="fill:none;stroke:#959595;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="circle3950"
+       class="layout"
+       r="8.8553667"
+       cy="10.039662"
+       cx="11.969792" />
+    <path
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path3954"
+       d="M 1.711385,10.039662 H 6.4458368"
+       style="fill:none;stroke:#959595;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       inkscape:transform-center-y="7.8813561"
+       style="fill:none;stroke:#959595;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 11.969792,20.29807 V 15.563619"
+       id="path3956"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       inkscape:transform-center-x="-7.881356"
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path3958"
+       d="M 22.2282,10.039662 H 17.493748"
+       style="fill:none;stroke:#959595;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       inkscape:transform-center-y="-7.881356"
+       style="fill:none;stroke:#959595;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 11.969792,-0.21874478 V 4.5157063"
+       id="path3960"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
   </g>
 </svg>

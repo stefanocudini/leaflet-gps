@@ -1,7 +1,7 @@
 /* 
- * Leaflet Control GPS v1.7.0 - 2017-08-12 
+ * Leaflet Control GPS v1.7.2 - 2018-05-14 
  * 
- * Copyright 2017 Stefano Cudini 
+ * Copyright 2018 Stefano Cudini 
  * stefano.cudini@gmail.com 
  * http://labs.easyblog.it/ 
  * 
