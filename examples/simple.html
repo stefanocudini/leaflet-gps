@@ -41,8 +41,8 @@ Using Chrome extension for testing:
 
 	gps
 	.on('gps:located', function(e) {
-	//	e.marker.bindPopup(e.latlng.toString()).openPopup()
-	console.log(e.latlng)
+		//	e.marker.bindPopup(e.latlng.toString()).openPopup()
+		console.log(e.latlng, map.getCenter())
 	})
 	.on('gps:disabled', function(e) {
 		e.marker.closePopup()
