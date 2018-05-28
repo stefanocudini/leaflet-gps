@@ -1,5 +1,5 @@
 /* 
- * Leaflet Control GPS v1.7.4 - 2018-05-28 
+ * Leaflet Control GPS v1.7.5 - 2018-05-28 
  * 
  * Copyright 2018 Stefano Cudini 
  * stefano.cudini@gmail.com 
@@ -249,6 +249,6 @@ L.control.gps = function (options) {
 	return new L.Control.Gps(options);
 };
 
-
+	return L.Control.Gps;
 });
 
