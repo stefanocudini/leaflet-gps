@@ -233,7 +233,6 @@ L.control.gps = function (options) {
 	return new L.Control.Gps(options);
 };
 
-return L.Control.Gps;
 
 });
 
