@@ -1,6 +1,9 @@
 Leaflet.Control.GPS
 ============
 
+[![npm version](https://badge.fury.io/js/leaflet-gps.svg)](http://badge.fury.io/js/leaflet-gps)
+
+
 A leaflet control plugin for tracking gps position
 
 Tested in Leaflet 0.7.7 and 1.3.0
