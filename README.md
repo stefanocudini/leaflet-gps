@@ -72,3 +72,15 @@ map.addControl( new L.Control.Gps( { transform: function(realGps) { return tinne
 | getLocation()		| 	 | return Latlng and marker of current position  |
 | activate()           |  	 | active tracking on runtime           |
 | deactivate()		| 	 | deactive tracking on runtime |
+
+
+
+
+# Use Cases
+This list is intended to be of utility for all developers who are looking web mapping sample code to solve complex problems of integration with other systems using Leaflet Control GPS.
+
+**Anyone can add the link of your website**
+
+*(spamming urls will be automatically deleted)*
+
+* [Refuges.info](https://www.refuges.info/gps/)
