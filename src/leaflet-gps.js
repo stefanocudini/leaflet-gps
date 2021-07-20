@@ -162,21 +162,36 @@ L.Control.Gps = L.Control.extend({
 	},
 
 	_drawGps: function(e) {
+		
+		var self = this;
+
 		//TODO use e.accuracy for gps circle radius/color
 		this._currentLocation = this.options.transform(e.latlng);
 		
 		this._gpsMarker.setLatLng(this._currentLocation);
 
-		if(this.options.autoCenter)
+		if(this.options.autoCenter) {
+
+			this._map.once('moveend zoomend', function(e) {
+						
+				self.fire('gps:located', {
+					latlng: self._currentLocation,
+					marker: self._gpsMarker
+				});
+			});
+			
 			this._map.panTo(e.latlng);
+		}
+		else {
+			self.fire('gps:located', {
+				latlng: self._currentLocation,
+				marker: self._gpsMarker
+			});
+		}
+
 
 	//    	if(this._gpsMarker.accuracyCircle)
 	//    		this._gpsMarker.accuracyCircle.setRadius((e.accuracy / 2).toFixed(0));
-			
-		this.fire('gps:located', {
-			latlng: this._currentLocation,
-			marker: this._gpsMarker
-		});
 	},
 
 	_errorGps: function(e) {
@@ -218,7 +233,6 @@ L.control.gps = function (options) {
 	return new L.Control.Gps(options);
 };
 
-return L.Control.Gps;
-
+	return L.Control.Gps;
 });
 

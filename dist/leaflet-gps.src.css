@@ -1,7 +1,7 @@
 /* 
- * Leaflet Control GPS v1.7.0 - 2017-08-12 
+ * Leaflet Control GPS v1.7.6 - 2018-05-28 
  * 
- * Copyright 2017 Stefano Cudini 
+ * Copyright 2018 Stefano Cudini 
  * stefano.cudini@gmail.com 
  * https://opengeo.tech/ 
  * 
@@ -26,20 +26,24 @@
 	/*background-color: rgba(0, 0, 0, 0.25);*/
 	background-color: rgba(255, 255, 255, 0.8);
 	z-index:1000;	
-	box-shadow: 0 1px 7px rgba(0,0,0,0.65);
+	/*box-shadow: 0 1px 7px rgba(0,0,0,0.65);*/
+	border: 2px solid rgba(0,0,0,0.2);
+	background-clip: padding-box;
 	margin-left:10px;
 	margin-top:10px;
 }
 .leaflet-control-gps .gps-button {
 	display:block;
 	float:left;
-	width:26px;
-	height:26px;
-	background-image: url('../images/gps-icon.png');
+	width:22px;
+	height:22px;
+	background-image: url('../images/gps-icon.svg');
 	background-repeat: no-repeat;
 	background-position: 1px 1px;
 	background-color: #fff;
 	border-radius:4px;
+	padding: 2px;
+	margin: 2px;
 }
 .leaflet-control-gps .gps-button:hover,
 .leaflet-control-gps .gps-button.active:hover {
@@ -49,22 +53,22 @@
 .leaflet-control-gps .gps-button.loading:hover {
 	background-position: 1px -28px;
 }
-.leaflet-control-gps .gps-button.disabled {
-	background-position: 1px -28px;
-}
 .leaflet-control-gps .gps-button.active {
-	background-position: 1px -56px;
+	background-position: 1px -52px;
+}
+.leaflet-control-gps .gps-button.disabled {
+	background-position: 1px -24px;
 }
 
 .leaflet-control-gps .gps-alert {
 	position:absolute;
-	left:26px;
+	left:34px;
 	bottom:-1px;
 	width:220px;
 	padding:2px;
-	line-height:.95em;
+	line-height:1em;
 	color:#e00;
-	border: 1px solid #888;	
+	border: 2px solid rgba(0,0,0,0.2);
 	background-color: rgba(255, 255, 255, 0.75);
 	border-radius:4px;
 }
