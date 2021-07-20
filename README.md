@@ -6,7 +6,7 @@ A leaflet control plugin for tracking gps position
 Tested in Leaflet 0.7.7 and 1.1.0
 
 **Demos online:**  
-[labs.easyblog.it/maps/leaflet-gps](http://labs.easyblog.it/maps/leaflet-gps/)
+[opengeo.tech/maps/leaflet-gps](https://opengeo.tech/maps/leaflet-gps/)
 
 # How to use
 
@@ -33,7 +33,7 @@ map.addControl( new L.Control.Gps( { transform: function(realGps) { return tinne
 # Where
 
 **Demos online:**  
-[labs.easyblog.it/maps/leaflet-gps](http://labs.easyblog.it/maps/leaflet-gps/)
+[opengeo.tech/maps/leaflet-gps](https://opengeo.tech/maps/leaflet-gps/)
 
 **Source code:**  
 [Github](https://github.com/stefanocudini/leaflet-gps)  

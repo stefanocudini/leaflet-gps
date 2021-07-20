@@ -6,11 +6,11 @@
     "type": "git",
     "url": "git@github.com:stefanocudini/leaflet-gps.git"
   },
-  "homepage": "http://labs.easyblog.it/maps/leaflet-gps/",
+  "homepage": "https://opengeo.tech/maps/leaflet-gps/",
   "author": {
     "name": "Stefano Cudini",
     "email": "stefano.cudini@gmail.com",
-    "url": "http://labs.easyblog.it/"
+    "url": "https://opengeo.tech/"
   },
   "license": "MIT",
   "keywords": [

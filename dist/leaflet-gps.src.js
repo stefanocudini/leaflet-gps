@@ -3,12 +3,12 @@
  * 
  * Copyright 2017 Stefano Cudini 
  * stefano.cudini@gmail.com 
- * http://labs.easyblog.it/ 
+ * https://opengeo.tech/ 
  * 
  * Licensed under the MIT license. 
  * 
  * Demos: 
- * http://labs.easyblog.it/maps/leaflet-gps/ 
+ * https://opengeo.tech/maps/leaflet-gps/ 
  * 
  * Source: 
  * git@github.com:stefanocudini/leaflet-gps.git 
