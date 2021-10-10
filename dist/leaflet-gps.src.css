@@ -1,5 +1,5 @@
 /* 
- * Leaflet Control GPS v1.7.7 - 2021-10-10 
+ * Leaflet Control GPS v1.7.8 - 2021-10-10 
  * 
  * Copyright 2021 Stefano Cudini 
  * stefano.cudini@gmail.com 
