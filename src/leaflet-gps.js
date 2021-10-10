@@ -176,25 +176,17 @@ L.Control.Gps = L.Control.extend({
 
 		this._gpsMarker.setLatLng(this._currentLocation);
 
-		if(this.options.autoCenter) {
-
-			this._map.once('moveend zoomend', function(e) {
-
-				self.fire('gps:located', {
-					latlng: self._currentLocation,
-					marker: self._gpsMarker
-				});
-			});
-
-			this._map.panTo(e.latlng);
+		if(this.options.autoFollow) {
+			this._map.on('locationfound', this._drawGps, this);
 		}
 		else {
-			self.fire('gps:located', {
-				latlng: self._currentLocation,
-				marker: self._gpsMarker
-			});
+			this._map.once('locationfound', this._drawGps, this);
 		}
 
+		this._map.on('locationerror', this._errorGps, this);
+
+		if(this.options.autoActive)
+			this.activate();
 
 	//    	if(this._gpsMarker.accuracyCircle)
 	//    		this._gpsMarker.accuracyCircle.setRadius((e.accuracy / 2).toFixed(0));
