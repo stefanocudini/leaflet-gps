@@ -1,7 +1,7 @@
 /* 
- * Leaflet Control GPS v1.7.6 - 2018-05-28 
+ * Leaflet Control GPS v1.7.7 - 2021-10-10 
  * 
- * Copyright 2018 Stefano Cudini 
+ * Copyright 2021 Stefano Cudini 
  * stefano.cudini@gmail.com 
  * https://opengeo.tech/ 
  * 
@@ -50,6 +50,7 @@ L.Control.Gps = L.Control.extend({
 	options: {
 		autoActive: false,		//activate control at startup
 		autoCenter: false,		//move map when gps location change
+		autoFollow: true, 		//move map continuously
 		maxZoom: null,			//max zoom for autoCenter
 		textErr: '',			//error message on alert notification
 		callErr: null,			//function that run on gps error activating
@@ -102,9 +103,14 @@ L.Control.Gps = L.Control.extend({
 		//if(this.options.accuracy)
 		//	this._accuracyCircle = new L.Circle([0,0], this.options.style);
 
-		this._map
-			.on('locationfound', this._drawGps, this)
-			.on('locationerror', this._errorGps, this);
+		if(this.options.autoFollow) {
+			this._map.on('locationfound', this._drawGps, this);
+		}
+		else {
+			this._map.once('locationfound', this._drawGps, this);
+		}
+
+		this._map.on('locationerror', this._errorGps, this);
 
 		if(this.options.autoActive)
 			this.activate();
@@ -137,15 +143,15 @@ L.Control.Gps = L.Control.extend({
 		this._map.addLayer( this._gpsMarker );
 
 		L.DomUtil.addClass(this._button, 'loading');
-		
+
 		this._map.once('locationfound', function(e) {
-			
+
 			L.DomUtil.removeClass(this._button, 'loading');
 			L.DomUtil.removeClass(this._button, 'disabled');
 			L.DomUtil.addClass(this._button, 'active');
 
 			this._isLoading = false;
-			
+
 			if(this.options.autoCenter)
 				this._map.setView(e.latlng, this.options.maxZoom || this._map.getZoom());
 
@@ -160,51 +166,43 @@ L.Control.Gps = L.Control.extend({
 	},
 
 	deactivate: function() {
-		
+
 		this._isActive = false;
 		this._isLoading = false;
-		
+
 		L.DomUtil.removeClass(this._button, 'active');
 		L.DomUtil.removeClass(this._button, 'loading');
 
 		if(this._map) {
 			this._map.stopLocate();
 			this._map.removeLayer( this._gpsMarker );
-		}		
-		
+		}
+
 		//this._gpsMarker.setLatLng([-90,0]);  //move to antarctica!
 		//TODO make method .hide() using _icon.style.display = 'none'
 		this.fire('gps:disabled', {marker: this._gpsMarker});
 	},
 
 	_drawGps: function(e) {
-		
+
 		var self = this;
 
 		//TODO use e.accuracy for gps circle radius/color
 		this._currentLocation = this.options.transform(e.latlng);
-		
+
 		this._gpsMarker.setLatLng(this._currentLocation);
 
-		if(this.options.autoCenter) {
-
-			this._map.once('moveend zoomend', function(e) {
-						
-				self.fire('gps:located', {
-					latlng: self._currentLocation,
-					marker: self._gpsMarker
-				});
-			});
-			
-			this._map.panTo(e.latlng);
+		if(this.options.autoFollow) {
+			this._map.on('locationfound', this._drawGps, this);
 		}
 		else {
-			self.fire('gps:located', {
-				latlng: self._currentLocation,
-				marker: self._gpsMarker
-			});
+			this._map.once('locationfound', this._drawGps, this);
 		}
 
+		this._map.on('locationerror', this._errorGps, this);
+
+		if(this.options.autoActive)
+			this.activate();
 
 	//    	if(this._gpsMarker.accuracyCircle)
 	//    		this._gpsMarker.accuracyCircle.setRadius((e.accuracy / 2).toFixed(0));
@@ -214,7 +212,7 @@ L.Control.Gps = L.Control.extend({
 		this.fire('gps:error', e);
 
 		this.deactivate();
-		
+
 		L.DomUtil.addClass(this._button, 'disabled');
 
 		this._errorFunc.call(this, this.options.textErr || e.message);
